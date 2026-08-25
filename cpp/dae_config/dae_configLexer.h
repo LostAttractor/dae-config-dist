@@ -10,11 +10,12 @@
 namespace dae_config {
 
 
+
 class  dae_configLexer : public antlr4::Lexer {
 public:
   enum {
-    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7, 
-    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, WHITESPACE = 12, COMMENT_BLOCK = 13, 
+    T__0 = 1, T__1 = 2, T__2 = 3, T__3 = 4, T__4 = 5, T__5 = 6, T__6 = 7,
+    T__7 = 8, T__8 = 9, T__9 = 10, T__10 = 11, WHITESPACE = 12, COMMENT_BLOCK = 13,
     COMMENT_LINE_SHARP = 14, ID = 15, NON_ID = 16, QUOTE_STRING = 17
   };
 

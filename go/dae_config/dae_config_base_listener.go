@@ -26,41 +26,11 @@ func (s *Basedae_configListener) EnterStart(ctx *StartContext) {}
 // ExitStart is called when production start is exited.
 func (s *Basedae_configListener) ExitStart(ctx *StartContext) {}
 
-// EnterBare_literal is called when production bare_literal is entered.
-func (s *Basedae_configListener) EnterBare_literal(ctx *Bare_literalContext) {}
-
-// ExitBare_literal is called when production bare_literal is exited.
-func (s *Basedae_configListener) ExitBare_literal(ctx *Bare_literalContext) {}
-
-// EnterQuote_literal is called when production quote_literal is entered.
-func (s *Basedae_configListener) EnterQuote_literal(ctx *Quote_literalContext) {}
-
-// ExitQuote_literal is called when production quote_literal is exited.
-func (s *Basedae_configListener) ExitQuote_literal(ctx *Quote_literalContext) {}
-
 // EnterLiteral is called when production literal is entered.
 func (s *Basedae_configListener) EnterLiteral(ctx *LiteralContext) {}
 
 // ExitLiteral is called when production literal is exited.
 func (s *Basedae_configListener) ExitLiteral(ctx *LiteralContext) {}
-
-// EnterLiteralExpression is called when production literalExpression is entered.
-func (s *Basedae_configListener) EnterLiteralExpression(ctx *LiteralExpressionContext) {}
-
-// ExitLiteralExpression is called when production literalExpression is exited.
-func (s *Basedae_configListener) ExitLiteralExpression(ctx *LiteralExpressionContext) {}
-
-// EnterInput is called when production input is entered.
-func (s *Basedae_configListener) EnterInput(ctx *InputContext) {}
-
-// ExitInput is called when production input is exited.
-func (s *Basedae_configListener) ExitInput(ctx *InputContext) {}
-
-// EnterProgramStructureBlcok is called when production programStructureBlcok is entered.
-func (s *Basedae_configListener) EnterProgramStructureBlcok(ctx *ProgramStructureBlcokContext) {}
-
-// ExitProgramStructureBlcok is called when production programStructureBlcok is exited.
-func (s *Basedae_configListener) ExitProgramStructureBlcok(ctx *ProgramStructureBlcokContext) {}
 
 // EnterExpression is called when production expression is entered.
 func (s *Basedae_configListener) EnterExpression(ctx *ExpressionContext) {}
@@ -80,23 +50,17 @@ func (s *Basedae_configListener) EnterOptAnnotation(ctx *OptAnnotationContext) {
 // ExitOptAnnotation is called when production optAnnotation is exited.
 func (s *Basedae_configListener) ExitOptAnnotation(ctx *OptAnnotationContext) {}
 
+// EnterAnnotationParameter is called when production annotationParameter is entered.
+func (s *Basedae_configListener) EnterAnnotationParameter(ctx *AnnotationParameterContext) {}
+
+// ExitAnnotationParameter is called when production annotationParameter is exited.
+func (s *Basedae_configListener) ExitAnnotationParameter(ctx *AnnotationParameterContext) {}
+
 // EnterFunctionPrototype is called when production functionPrototype is entered.
 func (s *Basedae_configListener) EnterFunctionPrototype(ctx *FunctionPrototypeContext) {}
 
 // ExitFunctionPrototype is called when production functionPrototype is exited.
 func (s *Basedae_configListener) ExitFunctionPrototype(ctx *FunctionPrototypeContext) {}
-
-// EnterOptParameterList is called when production optParameterList is entered.
-func (s *Basedae_configListener) EnterOptParameterList(ctx *OptParameterListContext) {}
-
-// ExitOptParameterList is called when production optParameterList is exited.
-func (s *Basedae_configListener) ExitOptParameterList(ctx *OptParameterListContext) {}
-
-// EnterNonEmptyParameterList is called when production nonEmptyParameterList is entered.
-func (s *Basedae_configListener) EnterNonEmptyParameterList(ctx *NonEmptyParameterListContext) {}
-
-// ExitNonEmptyParameterList is called when production nonEmptyParameterList is exited.
-func (s *Basedae_configListener) ExitNonEmptyParameterList(ctx *NonEmptyParameterListContext) {}
 
 // EnterParameter is called when production parameter is entered.
 func (s *Basedae_configListener) EnterParameter(ctx *ParameterContext) {}
@@ -104,36 +68,20 @@ func (s *Basedae_configListener) EnterParameter(ctx *ParameterContext) {}
 // ExitParameter is called when production parameter is exited.
 func (s *Basedae_configListener) ExitParameter(ctx *ParameterContext) {}
 
-// EnterRoutingRule is called when production routingRule is entered.
-func (s *Basedae_configListener) EnterRoutingRule(ctx *RoutingRuleContext) {}
+// EnterArrowExpression is called when production arrowExpression is entered.
+func (s *Basedae_configListener) EnterArrowExpression(ctx *ArrowExpressionContext) {}
 
-// ExitRoutingRule is called when production routingRule is exited.
-func (s *Basedae_configListener) ExitRoutingRule(ctx *RoutingRuleContext) {}
+// ExitArrowExpression is called when production arrowExpression is exited.
+func (s *Basedae_configListener) ExitArrowExpression(ctx *ArrowExpressionContext) {}
 
-// EnterOutboundExpr is called when production outboundExpr is entered.
-func (s *Basedae_configListener) EnterOutboundExpr(ctx *OutboundExprContext) {}
+// EnterArrowOperand is called when production arrowOperand is entered.
+func (s *Basedae_configListener) EnterArrowOperand(ctx *ArrowOperandContext) {}
 
-// ExitOutboundExpr is called when production outboundExpr is exited.
-func (s *Basedae_configListener) ExitOutboundExpr(ctx *OutboundExprContext) {}
+// ExitArrowOperand is called when production arrowOperand is exited.
+func (s *Basedae_configListener) ExitArrowOperand(ctx *ArrowOperandContext) {}
 
-// EnterFunctionPrototypeExpression is called when production functionPrototypeExpression is entered.
-func (s *Basedae_configListener) EnterFunctionPrototypeExpression(ctx *FunctionPrototypeExpressionContext) {
-}
+// EnterStandaloneFunction is called when production standaloneFunction is entered.
+func (s *Basedae_configListener) EnterStandaloneFunction(ctx *StandaloneFunctionContext) {}
 
-// ExitFunctionPrototypeExpression is called when production functionPrototypeExpression is exited.
-func (s *Basedae_configListener) ExitFunctionPrototypeExpression(ctx *FunctionPrototypeExpressionContext) {
-}
-
-// EnterRoutingRuleOrDeclarationOrLiteralOrExpressionList is called when production routingRuleOrDeclarationOrLiteralOrExpressionList is entered.
-func (s *Basedae_configListener) EnterRoutingRuleOrDeclarationOrLiteralOrExpressionList(ctx *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) {
-}
-
-// ExitRoutingRuleOrDeclarationOrLiteralOrExpressionList is called when production routingRuleOrDeclarationOrLiteralOrExpressionList is exited.
-func (s *Basedae_configListener) ExitRoutingRuleOrDeclarationOrLiteralOrExpressionList(ctx *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) {
-}
-
-// EnterRoutingRuleList is called when production routingRuleList is entered.
-func (s *Basedae_configListener) EnterRoutingRuleList(ctx *RoutingRuleListContext) {}
-
-// ExitRoutingRuleList is called when production routingRuleList is exited.
-func (s *Basedae_configListener) ExitRoutingRuleList(ctx *RoutingRuleListContext) {}
+// ExitStandaloneFunction is called when production standaloneFunction is exited.
+func (s *Basedae_configListener) ExitStandaloneFunction(ctx *StandaloneFunctionContext) {}

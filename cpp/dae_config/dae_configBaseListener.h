@@ -21,23 +21,8 @@ public:
   virtual void enterStart(dae_configParser::StartContext * /*ctx*/) override { }
   virtual void exitStart(dae_configParser::StartContext * /*ctx*/) override { }
 
-  virtual void enterBare_literal(dae_configParser::Bare_literalContext * /*ctx*/) override { }
-  virtual void exitBare_literal(dae_configParser::Bare_literalContext * /*ctx*/) override { }
-
-  virtual void enterQuote_literal(dae_configParser::Quote_literalContext * /*ctx*/) override { }
-  virtual void exitQuote_literal(dae_configParser::Quote_literalContext * /*ctx*/) override { }
-
   virtual void enterLiteral(dae_configParser::LiteralContext * /*ctx*/) override { }
   virtual void exitLiteral(dae_configParser::LiteralContext * /*ctx*/) override { }
-
-  virtual void enterLiteralExpression(dae_configParser::LiteralExpressionContext * /*ctx*/) override { }
-  virtual void exitLiteralExpression(dae_configParser::LiteralExpressionContext * /*ctx*/) override { }
-
-  virtual void enterInput(dae_configParser::InputContext * /*ctx*/) override { }
-  virtual void exitInput(dae_configParser::InputContext * /*ctx*/) override { }
-
-  virtual void enterProgramStructureBlcok(dae_configParser::ProgramStructureBlcokContext * /*ctx*/) override { }
-  virtual void exitProgramStructureBlcok(dae_configParser::ProgramStructureBlcokContext * /*ctx*/) override { }
 
   virtual void enterExpression(dae_configParser::ExpressionContext * /*ctx*/) override { }
   virtual void exitExpression(dae_configParser::ExpressionContext * /*ctx*/) override { }
@@ -48,32 +33,23 @@ public:
   virtual void enterOptAnnotation(dae_configParser::OptAnnotationContext * /*ctx*/) override { }
   virtual void exitOptAnnotation(dae_configParser::OptAnnotationContext * /*ctx*/) override { }
 
+  virtual void enterAnnotationParameter(dae_configParser::AnnotationParameterContext * /*ctx*/) override { }
+  virtual void exitAnnotationParameter(dae_configParser::AnnotationParameterContext * /*ctx*/) override { }
+
   virtual void enterFunctionPrototype(dae_configParser::FunctionPrototypeContext * /*ctx*/) override { }
   virtual void exitFunctionPrototype(dae_configParser::FunctionPrototypeContext * /*ctx*/) override { }
-
-  virtual void enterOptParameterList(dae_configParser::OptParameterListContext * /*ctx*/) override { }
-  virtual void exitOptParameterList(dae_configParser::OptParameterListContext * /*ctx*/) override { }
-
-  virtual void enterNonEmptyParameterList(dae_configParser::NonEmptyParameterListContext * /*ctx*/) override { }
-  virtual void exitNonEmptyParameterList(dae_configParser::NonEmptyParameterListContext * /*ctx*/) override { }
 
   virtual void enterParameter(dae_configParser::ParameterContext * /*ctx*/) override { }
   virtual void exitParameter(dae_configParser::ParameterContext * /*ctx*/) override { }
 
-  virtual void enterRoutingRule(dae_configParser::RoutingRuleContext * /*ctx*/) override { }
-  virtual void exitRoutingRule(dae_configParser::RoutingRuleContext * /*ctx*/) override { }
+  virtual void enterArrowExpression(dae_configParser::ArrowExpressionContext * /*ctx*/) override { }
+  virtual void exitArrowExpression(dae_configParser::ArrowExpressionContext * /*ctx*/) override { }
 
-  virtual void enterOutboundExpr(dae_configParser::OutboundExprContext * /*ctx*/) override { }
-  virtual void exitOutboundExpr(dae_configParser::OutboundExprContext * /*ctx*/) override { }
+  virtual void enterArrowOperand(dae_configParser::ArrowOperandContext * /*ctx*/) override { }
+  virtual void exitArrowOperand(dae_configParser::ArrowOperandContext * /*ctx*/) override { }
 
-  virtual void enterFunctionPrototypeExpression(dae_configParser::FunctionPrototypeExpressionContext * /*ctx*/) override { }
-  virtual void exitFunctionPrototypeExpression(dae_configParser::FunctionPrototypeExpressionContext * /*ctx*/) override { }
-
-  virtual void enterRoutingRuleOrDeclarationOrLiteralOrExpressionList(dae_configParser::RoutingRuleOrDeclarationOrLiteralOrExpressionListContext * /*ctx*/) override { }
-  virtual void exitRoutingRuleOrDeclarationOrLiteralOrExpressionList(dae_configParser::RoutingRuleOrDeclarationOrLiteralOrExpressionListContext * /*ctx*/) override { }
-
-  virtual void enterRoutingRuleList(dae_configParser::RoutingRuleListContext * /*ctx*/) override { }
-  virtual void exitRoutingRuleList(dae_configParser::RoutingRuleListContext * /*ctx*/) override { }
+  virtual void enterStandaloneFunction(dae_configParser::StandaloneFunctionContext * /*ctx*/) override { }
+  virtual void exitStandaloneFunction(dae_configParser::StandaloneFunctionContext * /*ctx*/) override { }
 
 
   virtual void enterEveryRule(antlr4::ParserRuleContext * /*ctx*/) override { }

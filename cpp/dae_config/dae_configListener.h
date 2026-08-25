@@ -19,23 +19,8 @@ public:
   virtual void enterStart(dae_configParser::StartContext *ctx) = 0;
   virtual void exitStart(dae_configParser::StartContext *ctx) = 0;
 
-  virtual void enterBare_literal(dae_configParser::Bare_literalContext *ctx) = 0;
-  virtual void exitBare_literal(dae_configParser::Bare_literalContext *ctx) = 0;
-
-  virtual void enterQuote_literal(dae_configParser::Quote_literalContext *ctx) = 0;
-  virtual void exitQuote_literal(dae_configParser::Quote_literalContext *ctx) = 0;
-
   virtual void enterLiteral(dae_configParser::LiteralContext *ctx) = 0;
   virtual void exitLiteral(dae_configParser::LiteralContext *ctx) = 0;
-
-  virtual void enterLiteralExpression(dae_configParser::LiteralExpressionContext *ctx) = 0;
-  virtual void exitLiteralExpression(dae_configParser::LiteralExpressionContext *ctx) = 0;
-
-  virtual void enterInput(dae_configParser::InputContext *ctx) = 0;
-  virtual void exitInput(dae_configParser::InputContext *ctx) = 0;
-
-  virtual void enterProgramStructureBlcok(dae_configParser::ProgramStructureBlcokContext *ctx) = 0;
-  virtual void exitProgramStructureBlcok(dae_configParser::ProgramStructureBlcokContext *ctx) = 0;
 
   virtual void enterExpression(dae_configParser::ExpressionContext *ctx) = 0;
   virtual void exitExpression(dae_configParser::ExpressionContext *ctx) = 0;
@@ -46,32 +31,23 @@ public:
   virtual void enterOptAnnotation(dae_configParser::OptAnnotationContext *ctx) = 0;
   virtual void exitOptAnnotation(dae_configParser::OptAnnotationContext *ctx) = 0;
 
+  virtual void enterAnnotationParameter(dae_configParser::AnnotationParameterContext *ctx) = 0;
+  virtual void exitAnnotationParameter(dae_configParser::AnnotationParameterContext *ctx) = 0;
+
   virtual void enterFunctionPrototype(dae_configParser::FunctionPrototypeContext *ctx) = 0;
   virtual void exitFunctionPrototype(dae_configParser::FunctionPrototypeContext *ctx) = 0;
-
-  virtual void enterOptParameterList(dae_configParser::OptParameterListContext *ctx) = 0;
-  virtual void exitOptParameterList(dae_configParser::OptParameterListContext *ctx) = 0;
-
-  virtual void enterNonEmptyParameterList(dae_configParser::NonEmptyParameterListContext *ctx) = 0;
-  virtual void exitNonEmptyParameterList(dae_configParser::NonEmptyParameterListContext *ctx) = 0;
 
   virtual void enterParameter(dae_configParser::ParameterContext *ctx) = 0;
   virtual void exitParameter(dae_configParser::ParameterContext *ctx) = 0;
 
-  virtual void enterRoutingRule(dae_configParser::RoutingRuleContext *ctx) = 0;
-  virtual void exitRoutingRule(dae_configParser::RoutingRuleContext *ctx) = 0;
+  virtual void enterArrowExpression(dae_configParser::ArrowExpressionContext *ctx) = 0;
+  virtual void exitArrowExpression(dae_configParser::ArrowExpressionContext *ctx) = 0;
 
-  virtual void enterOutboundExpr(dae_configParser::OutboundExprContext *ctx) = 0;
-  virtual void exitOutboundExpr(dae_configParser::OutboundExprContext *ctx) = 0;
+  virtual void enterArrowOperand(dae_configParser::ArrowOperandContext *ctx) = 0;
+  virtual void exitArrowOperand(dae_configParser::ArrowOperandContext *ctx) = 0;
 
-  virtual void enterFunctionPrototypeExpression(dae_configParser::FunctionPrototypeExpressionContext *ctx) = 0;
-  virtual void exitFunctionPrototypeExpression(dae_configParser::FunctionPrototypeExpressionContext *ctx) = 0;
-
-  virtual void enterRoutingRuleOrDeclarationOrLiteralOrExpressionList(dae_configParser::RoutingRuleOrDeclarationOrLiteralOrExpressionListContext *ctx) = 0;
-  virtual void exitRoutingRuleOrDeclarationOrLiteralOrExpressionList(dae_configParser::RoutingRuleOrDeclarationOrLiteralOrExpressionListContext *ctx) = 0;
-
-  virtual void enterRoutingRuleList(dae_configParser::RoutingRuleListContext *ctx) = 0;
-  virtual void exitRoutingRuleList(dae_configParser::RoutingRuleListContext *ctx) = 0;
+  virtual void enterStandaloneFunction(dae_configParser::StandaloneFunctionContext *ctx) = 0;
+  virtual void exitStandaloneFunction(dae_configParser::StandaloneFunctionContext *ctx) = 0;
 
 
 };

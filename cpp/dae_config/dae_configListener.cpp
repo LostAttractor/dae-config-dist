@@ -3,7 +3,3 @@
 
 
 #include "dae_configListener.h"
-
-
-using namespace dae_config;
-

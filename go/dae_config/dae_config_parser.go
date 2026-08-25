@@ -32,87 +32,85 @@ var dae_configParserStaticData struct {
 func dae_configParserInit() {
 	staticData := &dae_configParserStaticData
 	staticData.literalNames = []string{
-		"", "','", "'{'", "'}'", "':'", "'['", "']'", "'!'", "'('", "')'", "'->'",
-		"'&&'",
+		"", "'{'", "'}'", "':'", "'&&'", "','", "'['", "']'", "'!'", "'('",
+		"')'", "'->'",
 	}
 	staticData.symbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "WHITESPACE", "COMMENT_BLOCK",
 		"COMMENT_LINE_SHARP", "ID", "NON_ID", "QUOTE_STRING",
 	}
 	staticData.ruleNames = []string{
-		"start", "bare_literal", "quote_literal", "literal", "literalExpression",
-		"input", "programStructureBlcok", "expression", "declaration", "optAnnotation",
-		"functionPrototype", "optParameterList", "nonEmptyParameterList", "parameter",
-		"routingRule", "outboundExpr", "functionPrototypeExpression", "routingRuleOrDeclarationOrLiteralOrExpressionList",
-		"routingRuleList",
+		"start", "literal", "expression", "declaration", "optAnnotation", "annotationParameter",
+		"functionPrototype", "parameter", "arrowExpression", "arrowOperand",
+		"standaloneFunction",
 	}
 	staticData.predictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
-		4, 1, 17, 160, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
+		4, 1, 17, 155, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2, 4, 7,
 		4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2, 10, 7,
-		10, 2, 11, 7, 11, 2, 12, 7, 12, 2, 13, 7, 13, 2, 14, 7, 14, 2, 15, 7, 15,
-		2, 16, 7, 16, 2, 17, 7, 17, 2, 18, 7, 18, 1, 0, 1, 0, 1, 0, 1, 1, 1, 1,
-		1, 2, 1, 2, 1, 3, 1, 3, 3, 3, 48, 8, 3, 1, 4, 1, 4, 1, 4, 1, 4, 1, 4, 3,
-		4, 55, 8, 4, 1, 5, 1, 5, 1, 5, 3, 5, 60, 8, 5, 1, 5, 1, 5, 5, 5, 64, 8,
-		5, 10, 5, 12, 5, 67, 9, 5, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 1, 7, 1, 7, 1,
-		8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 3, 8, 86, 8, 8,
-		1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 3, 9, 93, 8, 9, 1, 10, 3, 10, 96, 8, 10,
-		1, 10, 1, 10, 1, 10, 1, 10, 1, 10, 1, 11, 1, 11, 3, 11, 105, 8, 11, 1,
-		12, 1, 12, 1, 12, 1, 12, 1, 12, 1, 12, 5, 12, 113, 8, 12, 10, 12, 12, 12,
-		116, 9, 12, 1, 13, 1, 13, 1, 13, 1, 13, 3, 13, 122, 8, 13, 1, 14, 1, 14,
-		1, 14, 1, 14, 1, 15, 1, 15, 3, 15, 130, 8, 15, 1, 16, 1, 16, 1, 16, 1,
-		16, 1, 16, 3, 16, 137, 8, 16, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17,
-		1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 1, 17, 3, 17, 152, 8, 17, 1,
-		18, 1, 18, 1, 18, 1, 18, 3, 18, 158, 8, 18, 1, 18, 0, 2, 10, 24, 19, 0,
-		2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32, 34, 36, 0,
-		1, 1, 0, 15, 16, 157, 0, 38, 1, 0, 0, 0, 2, 41, 1, 0, 0, 0, 4, 43, 1, 0,
-		0, 0, 6, 47, 1, 0, 0, 0, 8, 54, 1, 0, 0, 0, 10, 59, 1, 0, 0, 0, 12, 68,
-		1, 0, 0, 0, 14, 70, 1, 0, 0, 0, 16, 85, 1, 0, 0, 0, 18, 92, 1, 0, 0, 0,
-		20, 95, 1, 0, 0, 0, 22, 104, 1, 0, 0, 0, 24, 106, 1, 0, 0, 0, 26, 121,
-		1, 0, 0, 0, 28, 123, 1, 0, 0, 0, 30, 129, 1, 0, 0, 0, 32, 136, 1, 0, 0,
-		0, 34, 151, 1, 0, 0, 0, 36, 157, 1, 0, 0, 0, 38, 39, 3, 10, 5, 0, 39, 40,
-		5, 0, 0, 1, 40, 1, 1, 0, 0, 0, 41, 42, 7, 0, 0, 0, 42, 3, 1, 0, 0, 0, 43,
-		44, 5, 17, 0, 0, 44, 5, 1, 0, 0, 0, 45, 48, 3, 4, 2, 0, 46, 48, 3, 2, 1,
-		0, 47, 45, 1, 0, 0, 0, 47, 46, 1, 0, 0, 0, 48, 7, 1, 0, 0, 0, 49, 50, 3,
-		6, 3, 0, 50, 51, 5, 1, 0, 0, 51, 52, 3, 8, 4, 0, 52, 55, 1, 0, 0, 0, 53,
-		55, 3, 6, 3, 0, 54, 49, 1, 0, 0, 0, 54, 53, 1, 0, 0, 0, 55, 9, 1, 0, 0,
-		0, 56, 57, 6, 5, -1, 0, 57, 60, 3, 12, 6, 0, 58, 60, 1, 0, 0, 0, 59, 56,
-		1, 0, 0, 0, 59, 58, 1, 0, 0, 0, 60, 65, 1, 0, 0, 0, 61, 62, 10, 2, 0, 0,
-		62, 64, 3, 12, 6, 0, 63, 61, 1, 0, 0, 0, 64, 67, 1, 0, 0, 0, 65, 63, 1,
-		0, 0, 0, 65, 66, 1, 0, 0, 0, 66, 11, 1, 0, 0, 0, 67, 65, 1, 0, 0, 0, 68,
-		69, 3, 14, 7, 0, 69, 13, 1, 0, 0, 0, 70, 71, 5, 15, 0, 0, 71, 72, 5, 2,
-		0, 0, 72, 73, 3, 34, 17, 0, 73, 74, 5, 3, 0, 0, 74, 15, 1, 0, 0, 0, 75,
-		76, 5, 15, 0, 0, 76, 77, 5, 4, 0, 0, 77, 78, 3, 32, 16, 0, 78, 79, 3, 18,
-		9, 0, 79, 86, 1, 0, 0, 0, 80, 81, 5, 15, 0, 0, 81, 82, 5, 4, 0, 0, 82,
-		83, 3, 8, 4, 0, 83, 84, 3, 18, 9, 0, 84, 86, 1, 0, 0, 0, 85, 75, 1, 0,
-		0, 0, 85, 80, 1, 0, 0, 0, 86, 17, 1, 0, 0, 0, 87, 88, 5, 5, 0, 0, 88, 89,
-		3, 22, 11, 0, 89, 90, 5, 6, 0, 0, 90, 93, 1, 0, 0, 0, 91, 93, 1, 0, 0,
-		0, 92, 87, 1, 0, 0, 0, 92, 91, 1, 0, 0, 0, 93, 19, 1, 0, 0, 0, 94, 96,
-		5, 7, 0, 0, 95, 94, 1, 0, 0, 0, 95, 96, 1, 0, 0, 0, 96, 97, 1, 0, 0, 0,
-		97, 98, 5, 15, 0, 0, 98, 99, 5, 8, 0, 0, 99, 100, 3, 22, 11, 0, 100, 101,
-		5, 9, 0, 0, 101, 21, 1, 0, 0, 0, 102, 105, 3, 24, 12, 0, 103, 105, 1, 0,
-		0, 0, 104, 102, 1, 0, 0, 0, 104, 103, 1, 0, 0, 0, 105, 23, 1, 0, 0, 0,
-		106, 107, 6, 12, -1, 0, 107, 108, 3, 26, 13, 0, 108, 114, 1, 0, 0, 0, 109,
-		110, 10, 1, 0, 0, 110, 111, 5, 1, 0, 0, 111, 113, 3, 26, 13, 0, 112, 109,
-		1, 0, 0, 0, 113, 116, 1, 0, 0, 0, 114, 112, 1, 0, 0, 0, 114, 115, 1, 0,
-		0, 0, 115, 25, 1, 0, 0, 0, 116, 114, 1, 0, 0, 0, 117, 118, 5, 15, 0, 0,
-		118, 119, 5, 4, 0, 0, 119, 122, 3, 6, 3, 0, 120, 122, 3, 6, 3, 0, 121,
-		117, 1, 0, 0, 0, 121, 120, 1, 0, 0, 0, 122, 27, 1, 0, 0, 0, 123, 124, 3,
-		32, 16, 0, 124, 125, 5, 10, 0, 0, 125, 126, 3, 30, 15, 0, 126, 29, 1, 0,
-		0, 0, 127, 130, 3, 2, 1, 0, 128, 130, 3, 20, 10, 0, 129, 127, 1, 0, 0,
-		0, 129, 128, 1, 0, 0, 0, 130, 31, 1, 0, 0, 0, 131, 137, 3, 20, 10, 0, 132,
-		133, 3, 20, 10, 0, 133, 134, 5, 11, 0, 0, 134, 135, 3, 32, 16, 0, 135,
-		137, 1, 0, 0, 0, 136, 131, 1, 0, 0, 0, 136, 132, 1, 0, 0, 0, 137, 33, 1,
-		0, 0, 0, 138, 139, 3, 28, 14, 0, 139, 140, 3, 34, 17, 0, 140, 152, 1, 0,
-		0, 0, 141, 142, 3, 16, 8, 0, 142, 143, 3, 34, 17, 0, 143, 152, 1, 0, 0,
-		0, 144, 145, 3, 6, 3, 0, 145, 146, 3, 34, 17, 0, 146, 152, 1, 0, 0, 0,
-		147, 148, 3, 14, 7, 0, 148, 149, 3, 34, 17, 0, 149, 152, 1, 0, 0, 0, 150,
-		152, 1, 0, 0, 0, 151, 138, 1, 0, 0, 0, 151, 141, 1, 0, 0, 0, 151, 144,
-		1, 0, 0, 0, 151, 147, 1, 0, 0, 0, 151, 150, 1, 0, 0, 0, 152, 35, 1, 0,
-		0, 0, 153, 158, 3, 28, 14, 0, 154, 155, 3, 28, 14, 0, 155, 156, 3, 36,
-		18, 0, 156, 158, 1, 0, 0, 0, 157, 153, 1, 0, 0, 0, 157, 154, 1, 0, 0, 0,
-		158, 37, 1, 0, 0, 0, 14, 47, 54, 59, 65, 85, 92, 95, 104, 114, 121, 129,
-		136, 151, 157,
+		10, 1, 0, 5, 0, 24, 8, 0, 10, 0, 12, 0, 27, 9, 0, 1, 0, 1, 0, 1, 1, 1,
+		1, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 1, 2, 5, 2, 40, 8, 2, 10, 2, 12,
+		2, 43, 9, 2, 1, 2, 1, 2, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 5, 3, 52, 8, 3,
+		10, 3, 12, 3, 55, 9, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 1, 3, 5, 3,
+		64, 8, 3, 10, 3, 12, 3, 67, 9, 3, 1, 3, 1, 3, 3, 3, 71, 8, 3, 1, 4, 1,
+		4, 1, 4, 1, 4, 5, 4, 77, 8, 4, 10, 4, 12, 4, 80, 9, 4, 3, 4, 82, 8, 4,
+		1, 4, 1, 4, 3, 4, 86, 8, 4, 1, 5, 1, 5, 1, 5, 1, 5, 3, 5, 92, 8, 5, 1,
+		6, 3, 6, 95, 8, 6, 1, 6, 1, 6, 1, 6, 1, 6, 1, 6, 5, 6, 102, 8, 6, 10, 6,
+		12, 6, 105, 9, 6, 3, 6, 107, 8, 6, 1, 6, 1, 6, 1, 7, 1, 7, 1, 7, 1, 7,
+		3, 7, 115, 8, 7, 1, 8, 1, 8, 1, 8, 1, 8, 1, 8, 5, 8, 122, 8, 8, 10, 8,
+		12, 8, 125, 9, 8, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 5, 9, 132, 8, 9, 10, 9,
+		12, 9, 135, 9, 9, 1, 9, 1, 9, 1, 9, 1, 9, 1, 9, 5, 9, 142, 8, 9, 10, 9,
+		12, 9, 145, 9, 9, 1, 9, 1, 9, 1, 9, 3, 9, 150, 8, 9, 1, 10, 1, 10, 1, 10,
+		1, 10, 0, 0, 11, 0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 0, 1, 1, 0, 15,
+		17, 165, 0, 25, 1, 0, 0, 0, 2, 30, 1, 0, 0, 0, 4, 32, 1, 0, 0, 0, 6, 70,
+		1, 0, 0, 0, 8, 85, 1, 0, 0, 0, 10, 91, 1, 0, 0, 0, 12, 94, 1, 0, 0, 0,
+		14, 114, 1, 0, 0, 0, 16, 116, 1, 0, 0, 0, 18, 149, 1, 0, 0, 0, 20, 151,
+		1, 0, 0, 0, 22, 24, 3, 4, 2, 0, 23, 22, 1, 0, 0, 0, 24, 27, 1, 0, 0, 0,
+		25, 23, 1, 0, 0, 0, 25, 26, 1, 0, 0, 0, 26, 28, 1, 0, 0, 0, 27, 25, 1,
+		0, 0, 0, 28, 29, 5, 0, 0, 1, 29, 1, 1, 0, 0, 0, 30, 31, 7, 0, 0, 0, 31,
+		3, 1, 0, 0, 0, 32, 33, 5, 15, 0, 0, 33, 41, 5, 1, 0, 0, 34, 40, 3, 16,
+		8, 0, 35, 40, 3, 6, 3, 0, 36, 40, 3, 20, 10, 0, 37, 40, 3, 2, 1, 0, 38,
+		40, 3, 4, 2, 0, 39, 34, 1, 0, 0, 0, 39, 35, 1, 0, 0, 0, 39, 36, 1, 0, 0,
+		0, 39, 37, 1, 0, 0, 0, 39, 38, 1, 0, 0, 0, 40, 43, 1, 0, 0, 0, 41, 39,
+		1, 0, 0, 0, 41, 42, 1, 0, 0, 0, 42, 44, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
+		44, 45, 5, 2, 0, 0, 45, 5, 1, 0, 0, 0, 46, 47, 5, 15, 0, 0, 47, 48, 5,
+		3, 0, 0, 48, 53, 3, 12, 6, 0, 49, 50, 5, 4, 0, 0, 50, 52, 3, 12, 6, 0,
+		51, 49, 1, 0, 0, 0, 52, 55, 1, 0, 0, 0, 53, 51, 1, 0, 0, 0, 53, 54, 1,
+		0, 0, 0, 54, 56, 1, 0, 0, 0, 55, 53, 1, 0, 0, 0, 56, 57, 3, 8, 4, 0, 57,
+		71, 1, 0, 0, 0, 58, 59, 5, 15, 0, 0, 59, 60, 5, 3, 0, 0, 60, 65, 3, 2,
+		1, 0, 61, 62, 5, 5, 0, 0, 62, 64, 3, 2, 1, 0, 63, 61, 1, 0, 0, 0, 64, 67,
+		1, 0, 0, 0, 65, 63, 1, 0, 0, 0, 65, 66, 1, 0, 0, 0, 66, 68, 1, 0, 0, 0,
+		67, 65, 1, 0, 0, 0, 68, 69, 3, 8, 4, 0, 69, 71, 1, 0, 0, 0, 70, 46, 1,
+		0, 0, 0, 70, 58, 1, 0, 0, 0, 71, 7, 1, 0, 0, 0, 72, 81, 5, 6, 0, 0, 73,
+		78, 3, 10, 5, 0, 74, 75, 5, 5, 0, 0, 75, 77, 3, 10, 5, 0, 76, 74, 1, 0,
+		0, 0, 77, 80, 1, 0, 0, 0, 78, 76, 1, 0, 0, 0, 78, 79, 1, 0, 0, 0, 79, 82,
+		1, 0, 0, 0, 80, 78, 1, 0, 0, 0, 81, 73, 1, 0, 0, 0, 81, 82, 1, 0, 0, 0,
+		82, 83, 1, 0, 0, 0, 83, 86, 5, 7, 0, 0, 84, 86, 1, 0, 0, 0, 85, 72, 1,
+		0, 0, 0, 85, 84, 1, 0, 0, 0, 86, 9, 1, 0, 0, 0, 87, 92, 3, 14, 7, 0, 88,
+		89, 5, 15, 0, 0, 89, 90, 5, 3, 0, 0, 90, 92, 3, 12, 6, 0, 91, 87, 1, 0,
+		0, 0, 91, 88, 1, 0, 0, 0, 92, 11, 1, 0, 0, 0, 93, 95, 5, 8, 0, 0, 94, 93,
+		1, 0, 0, 0, 94, 95, 1, 0, 0, 0, 95, 96, 1, 0, 0, 0, 96, 97, 7, 0, 0, 0,
+		97, 106, 5, 9, 0, 0, 98, 103, 3, 14, 7, 0, 99, 100, 5, 5, 0, 0, 100, 102,
+		3, 14, 7, 0, 101, 99, 1, 0, 0, 0, 102, 105, 1, 0, 0, 0, 103, 101, 1, 0,
+		0, 0, 103, 104, 1, 0, 0, 0, 104, 107, 1, 0, 0, 0, 105, 103, 1, 0, 0, 0,
+		106, 98, 1, 0, 0, 0, 106, 107, 1, 0, 0, 0, 107, 108, 1, 0, 0, 0, 108, 109,
+		5, 10, 0, 0, 109, 13, 1, 0, 0, 0, 110, 111, 5, 15, 0, 0, 111, 112, 5, 3,
+		0, 0, 112, 115, 3, 2, 1, 0, 113, 115, 3, 2, 1, 0, 114, 110, 1, 0, 0, 0,
+		114, 113, 1, 0, 0, 0, 115, 15, 1, 0, 0, 0, 116, 117, 3, 18, 9, 0, 117,
+		118, 5, 11, 0, 0, 118, 123, 3, 18, 9, 0, 119, 120, 5, 11, 0, 0, 120, 122,
+		3, 18, 9, 0, 121, 119, 1, 0, 0, 0, 122, 125, 1, 0, 0, 0, 123, 121, 1, 0,
+		0, 0, 123, 124, 1, 0, 0, 0, 124, 17, 1, 0, 0, 0, 125, 123, 1, 0, 0, 0,
+		126, 127, 5, 15, 0, 0, 127, 128, 5, 3, 0, 0, 128, 133, 3, 12, 6, 0, 129,
+		130, 5, 4, 0, 0, 130, 132, 3, 12, 6, 0, 131, 129, 1, 0, 0, 0, 132, 135,
+		1, 0, 0, 0, 133, 131, 1, 0, 0, 0, 133, 134, 1, 0, 0, 0, 134, 136, 1, 0,
+		0, 0, 135, 133, 1, 0, 0, 0, 136, 137, 3, 8, 4, 0, 137, 150, 1, 0, 0, 0,
+		138, 143, 3, 12, 6, 0, 139, 140, 5, 4, 0, 0, 140, 142, 3, 12, 6, 0, 141,
+		139, 1, 0, 0, 0, 142, 145, 1, 0, 0, 0, 143, 141, 1, 0, 0, 0, 143, 144,
+		1, 0, 0, 0, 144, 146, 1, 0, 0, 0, 145, 143, 1, 0, 0, 0, 146, 147, 3, 8,
+		4, 0, 147, 150, 1, 0, 0, 0, 148, 150, 3, 2, 1, 0, 149, 126, 1, 0, 0, 0,
+		149, 138, 1, 0, 0, 0, 149, 148, 1, 0, 0, 0, 150, 19, 1, 0, 0, 0, 151, 152,
+		3, 12, 6, 0, 152, 153, 3, 8, 4, 0, 153, 21, 1, 0, 0, 0, 18, 25, 39, 41,
+		53, 65, 70, 78, 81, 85, 91, 94, 103, 106, 114, 123, 133, 143, 149,
 	}
 	deserializer := antlr.NewATNDeserializer(nil)
 	staticData.atn = deserializer.Deserialize(staticData.serializedATN)
@@ -172,25 +170,17 @@ const (
 
 // dae_configParser rules.
 const (
-	dae_configParserRULE_start                                             = 0
-	dae_configParserRULE_bare_literal                                      = 1
-	dae_configParserRULE_quote_literal                                     = 2
-	dae_configParserRULE_literal                                           = 3
-	dae_configParserRULE_literalExpression                                 = 4
-	dae_configParserRULE_input                                             = 5
-	dae_configParserRULE_programStructureBlcok                             = 6
-	dae_configParserRULE_expression                                        = 7
-	dae_configParserRULE_declaration                                       = 8
-	dae_configParserRULE_optAnnotation                                     = 9
-	dae_configParserRULE_functionPrototype                                 = 10
-	dae_configParserRULE_optParameterList                                  = 11
-	dae_configParserRULE_nonEmptyParameterList                             = 12
-	dae_configParserRULE_parameter                                         = 13
-	dae_configParserRULE_routingRule                                       = 14
-	dae_configParserRULE_outboundExpr                                      = 15
-	dae_configParserRULE_functionPrototypeExpression                       = 16
-	dae_configParserRULE_routingRuleOrDeclarationOrLiteralOrExpressionList = 17
-	dae_configParserRULE_routingRuleList                                   = 18
+	dae_configParserRULE_start               = 0
+	dae_configParserRULE_literal             = 1
+	dae_configParserRULE_expression          = 2
+	dae_configParserRULE_declaration         = 3
+	dae_configParserRULE_optAnnotation       = 4
+	dae_configParserRULE_annotationParameter = 5
+	dae_configParserRULE_functionPrototype   = 6
+	dae_configParserRULE_parameter           = 7
+	dae_configParserRULE_arrowExpression     = 8
+	dae_configParserRULE_arrowOperand        = 9
+	dae_configParserRULE_standaloneFunction  = 10
 )
 
 // IStartContext is an interface to support dynamic dispatch.
@@ -231,12 +221,41 @@ func NewStartContext(parser antlr.Parser, parent antlr.ParserRuleContext, invoki
 
 func (s *StartContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *StartContext) Input() IInputContext {
+func (s *StartContext) EOF() antlr.TerminalNode {
+	return s.GetToken(dae_configParserEOF, 0)
+}
+
+func (s *StartContext) AllExpression() []IExpressionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExpressionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExpressionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExpressionContext); ok {
+			tst[i] = t.(IExpressionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *StartContext) Expression(i int) IExpressionContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IInputContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IExpressionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -244,11 +263,7 @@ func (s *StartContext) Input() IInputContext {
 		return nil
 	}
 
-	return t.(IInputContext)
-}
-
-func (s *StartContext) EOF() antlr.TerminalNode {
-	return s.GetToken(dae_configParserEOF, 0)
+	return t.(IExpressionContext)
 }
 
 func (s *StartContext) GetRuleContext() antlr.RuleContext {
@@ -277,108 +292,6 @@ func (p *dae_configParser) Start() (localctx IStartContext) {
 
 	localctx = NewStartContext(p, p.GetParserRuleContext(), p.GetState())
 	p.EnterRule(localctx, 0, dae_configParserRULE_start)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(38)
-		p.input(0)
-	}
-	{
-		p.SetState(39)
-		p.Match(dae_configParserEOF)
-	}
-
-	return localctx
-}
-
-// IBare_literalContext is an interface to support dynamic dispatch.
-type IBare_literalContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsBare_literalContext differentiates from other interfaces.
-	IsBare_literalContext()
-}
-
-type Bare_literalContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyBare_literalContext() *Bare_literalContext {
-	var p = new(Bare_literalContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_bare_literal
-	return p
-}
-
-func (*Bare_literalContext) IsBare_literalContext() {}
-
-func NewBare_literalContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Bare_literalContext {
-	var p = new(Bare_literalContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_bare_literal
-
-	return p
-}
-
-func (s *Bare_literalContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *Bare_literalContext) ID() antlr.TerminalNode {
-	return s.GetToken(dae_configParserID, 0)
-}
-
-func (s *Bare_literalContext) NON_ID() antlr.TerminalNode {
-	return s.GetToken(dae_configParserNON_ID, 0)
-}
-
-func (s *Bare_literalContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *Bare_literalContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *Bare_literalContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterBare_literal(s)
-	}
-}
-
-func (s *Bare_literalContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitBare_literal(s)
-	}
-}
-
-func (p *dae_configParser) Bare_literal() (localctx IBare_literalContext) {
-	this := p
-	_ = this
-
-	localctx = NewBare_literalContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 2, dae_configParserRULE_bare_literal)
 	var _la int
 
 	defer func() {
@@ -398,110 +311,23 @@ func (p *dae_configParser) Bare_literal() (localctx IBare_literalContext) {
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(41)
+	p.SetState(25)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == dae_configParserID {
+		{
+			p.SetState(22)
+			p.Expression()
+		}
+
+		p.SetState(27)
+		p.GetErrorHandler().Sync(p)
 		_la = p.GetTokenStream().LA(1)
-
-		if !(_la == dae_configParserID || _la == dae_configParserNON_ID) {
-			p.GetErrorHandler().RecoverInline(p)
-		} else {
-			p.GetErrorHandler().ReportMatch(p)
-			p.Consume()
-		}
 	}
-
-	return localctx
-}
-
-// IQuote_literalContext is an interface to support dynamic dispatch.
-type IQuote_literalContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsQuote_literalContext differentiates from other interfaces.
-	IsQuote_literalContext()
-}
-
-type Quote_literalContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyQuote_literalContext() *Quote_literalContext {
-	var p = new(Quote_literalContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_quote_literal
-	return p
-}
-
-func (*Quote_literalContext) IsQuote_literalContext() {}
-
-func NewQuote_literalContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *Quote_literalContext {
-	var p = new(Quote_literalContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_quote_literal
-
-	return p
-}
-
-func (s *Quote_literalContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *Quote_literalContext) QUOTE_STRING() antlr.TerminalNode {
-	return s.GetToken(dae_configParserQUOTE_STRING, 0)
-}
-
-func (s *Quote_literalContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *Quote_literalContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *Quote_literalContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterQuote_literal(s)
-	}
-}
-
-func (s *Quote_literalContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitQuote_literal(s)
-	}
-}
-
-func (p *dae_configParser) Quote_literal() (localctx IQuote_literalContext) {
-	this := p
-	_ = this
-
-	localctx = NewQuote_literalContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 4, dae_configParserRULE_quote_literal)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(43)
-		p.Match(dae_configParserQUOTE_STRING)
+		p.SetState(28)
+		p.Match(dae_configParserEOF)
 	}
 
 	return localctx
@@ -545,36 +371,16 @@ func NewLiteralContext(parser antlr.Parser, parent antlr.ParserRuleContext, invo
 
 func (s *LiteralContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *LiteralContext) Quote_literal() IQuote_literalContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IQuote_literalContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IQuote_literalContext)
+func (s *LiteralContext) ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserID, 0)
 }
 
-func (s *LiteralContext) Bare_literal() IBare_literalContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IBare_literalContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
+func (s *LiteralContext) NON_ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserNON_ID, 0)
+}
 
-	if t == nil {
-		return nil
-	}
-
-	return t.(IBare_literalContext)
+func (s *LiteralContext) QUOTE_STRING() antlr.TerminalNode {
+	return s.GetToken(dae_configParserQUOTE_STRING, 0)
 }
 
 func (s *LiteralContext) GetRuleContext() antlr.RuleContext {
@@ -602,441 +408,8 @@ func (p *dae_configParser) Literal() (localctx ILiteralContext) {
 	_ = this
 
 	localctx = NewLiteralContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 6, dae_configParserRULE_literal)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.SetState(47)
-	p.GetErrorHandler().Sync(p)
-
-	switch p.GetTokenStream().LA(1) {
-	case dae_configParserQUOTE_STRING:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(45)
-			p.Quote_literal()
-		}
-
-	case dae_configParserID, dae_configParserNON_ID:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(46)
-			p.Bare_literal()
-		}
-
-	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-	}
-
-	return localctx
-}
-
-// ILiteralExpressionContext is an interface to support dynamic dispatch.
-type ILiteralExpressionContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsLiteralExpressionContext differentiates from other interfaces.
-	IsLiteralExpressionContext()
-}
-
-type LiteralExpressionContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyLiteralExpressionContext() *LiteralExpressionContext {
-	var p = new(LiteralExpressionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_literalExpression
-	return p
-}
-
-func (*LiteralExpressionContext) IsLiteralExpressionContext() {}
-
-func NewLiteralExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *LiteralExpressionContext {
-	var p = new(LiteralExpressionContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_literalExpression
-
-	return p
-}
-
-func (s *LiteralExpressionContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *LiteralExpressionContext) Literal() ILiteralContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILiteralContext)
-}
-
-func (s *LiteralExpressionContext) LiteralExpression() ILiteralExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(ILiteralExpressionContext)
-}
-
-func (s *LiteralExpressionContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *LiteralExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *LiteralExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterLiteralExpression(s)
-	}
-}
-
-func (s *LiteralExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitLiteralExpression(s)
-	}
-}
-
-func (p *dae_configParser) LiteralExpression() (localctx ILiteralExpressionContext) {
-	this := p
-	_ = this
-
-	localctx = NewLiteralExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 8, dae_configParserRULE_literalExpression)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.SetState(54)
-	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
-	case 1:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(49)
-			p.Literal()
-		}
-		{
-			p.SetState(50)
-			p.Match(dae_configParserT__0)
-		}
-		{
-			p.SetState(51)
-			p.LiteralExpression()
-		}
-
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(53)
-			p.Literal()
-		}
-
-	}
-
-	return localctx
-}
-
-// IInputContext is an interface to support dynamic dispatch.
-type IInputContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsInputContext differentiates from other interfaces.
-	IsInputContext()
-}
-
-type InputContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyInputContext() *InputContext {
-	var p = new(InputContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_input
-	return p
-}
-
-func (*InputContext) IsInputContext() {}
-
-func NewInputContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *InputContext {
-	var p = new(InputContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_input
-
-	return p
-}
-
-func (s *InputContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *InputContext) ProgramStructureBlcok() IProgramStructureBlcokContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IProgramStructureBlcokContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IProgramStructureBlcokContext)
-}
-
-func (s *InputContext) Input() IInputContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IInputContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IInputContext)
-}
-
-func (s *InputContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *InputContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *InputContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterInput(s)
-	}
-}
-
-func (s *InputContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitInput(s)
-	}
-}
-
-func (p *dae_configParser) Input() (localctx IInputContext) {
-	return p.input(0)
-}
-
-func (p *dae_configParser) input(_p int) (localctx IInputContext) {
-	this := p
-	_ = this
-
-	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
-	_parentState := p.GetState()
-	localctx = NewInputContext(p, p.GetParserRuleContext(), _parentState)
-	var _prevctx IInputContext = localctx
-	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 10
-	p.EnterRecursionRule(localctx, 10, dae_configParserRULE_input, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	var _alt int
-
-	p.EnterOuterAlt(localctx, 1)
-	p.SetState(59)
-	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 2, p.GetParserRuleContext()) {
-	case 1:
-		{
-			p.SetState(57)
-			p.ProgramStructureBlcok()
-		}
-
-	case 2:
-
-	}
-	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(65)
-	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
-
-	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
-		if _alt == 1 {
-			if p.GetParseListeners() != nil {
-				p.TriggerExitRuleEvent()
-			}
-			_prevctx = localctx
-			localctx = NewInputContext(p, _parentctx, _parentState)
-			p.PushNewRecursionContext(localctx, _startState, dae_configParserRULE_input)
-			p.SetState(61)
-
-			if !(p.Precpred(p.GetParserRuleContext(), 2)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 2)", ""))
-			}
-			{
-				p.SetState(62)
-				p.ProgramStructureBlcok()
-			}
-
-		}
-		p.SetState(67)
-		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 3, p.GetParserRuleContext())
-	}
-
-	return localctx
-}
-
-// IProgramStructureBlcokContext is an interface to support dynamic dispatch.
-type IProgramStructureBlcokContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsProgramStructureBlcokContext differentiates from other interfaces.
-	IsProgramStructureBlcokContext()
-}
-
-type ProgramStructureBlcokContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyProgramStructureBlcokContext() *ProgramStructureBlcokContext {
-	var p = new(ProgramStructureBlcokContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_programStructureBlcok
-	return p
-}
-
-func (*ProgramStructureBlcokContext) IsProgramStructureBlcokContext() {}
-
-func NewProgramStructureBlcokContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ProgramStructureBlcokContext {
-	var p = new(ProgramStructureBlcokContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_programStructureBlcok
-
-	return p
-}
-
-func (s *ProgramStructureBlcokContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *ProgramStructureBlcokContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *ProgramStructureBlcokContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *ProgramStructureBlcokContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *ProgramStructureBlcokContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterProgramStructureBlcok(s)
-	}
-}
-
-func (s *ProgramStructureBlcokContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitProgramStructureBlcok(s)
-	}
-}
-
-func (p *dae_configParser) ProgramStructureBlcok() (localctx IProgramStructureBlcokContext) {
-	this := p
-	_ = this
-
-	localctx = NewProgramStructureBlcokContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 12, dae_configParserRULE_programStructureBlcok)
+	p.EnterRule(localctx, 2, dae_configParserRULE_literal)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1056,8 +429,15 @@ func (p *dae_configParser) ProgramStructureBlcok() (localctx IProgramStructureBl
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(68)
-		p.Expression()
+		p.SetState(30)
+		_la = p.GetTokenStream().LA(1)
+
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 
 	return localctx
@@ -1105,12 +485,37 @@ func (s *ExpressionContext) ID() antlr.TerminalNode {
 	return s.GetToken(dae_configParserID, 0)
 }
 
-func (s *ExpressionContext) RoutingRuleOrDeclarationOrLiteralOrExpressionList() IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext {
+func (s *ExpressionContext) AllArrowExpression() []IArrowExpressionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IArrowExpressionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IArrowExpressionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IArrowExpressionContext); ok {
+			tst[i] = t.(IArrowExpressionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ExpressionContext) ArrowExpression(i int) IArrowExpressionContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IArrowExpressionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1118,7 +523,171 @@ func (s *ExpressionContext) RoutingRuleOrDeclarationOrLiteralOrExpressionList() 
 		return nil
 	}
 
-	return t.(IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
+	return t.(IArrowExpressionContext)
+}
+
+func (s *ExpressionContext) AllDeclaration() []IDeclarationContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IDeclarationContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IDeclarationContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IDeclarationContext); ok {
+			tst[i] = t.(IDeclarationContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ExpressionContext) Declaration(i int) IDeclarationContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IDeclarationContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IDeclarationContext)
+}
+
+func (s *ExpressionContext) AllStandaloneFunction() []IStandaloneFunctionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IStandaloneFunctionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IStandaloneFunctionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IStandaloneFunctionContext); ok {
+			tst[i] = t.(IStandaloneFunctionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ExpressionContext) StandaloneFunction(i int) IStandaloneFunctionContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IStandaloneFunctionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IStandaloneFunctionContext)
+}
+
+func (s *ExpressionContext) AllLiteral() []ILiteralContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(ILiteralContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]ILiteralContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(ILiteralContext); ok {
+			tst[i] = t.(ILiteralContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ExpressionContext) Literal(i int) ILiteralContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(ILiteralContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(ILiteralContext)
+}
+
+func (s *ExpressionContext) AllExpression() []IExpressionContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IExpressionContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IExpressionContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IExpressionContext); ok {
+			tst[i] = t.(IExpressionContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ExpressionContext) Expression(i int) IExpressionContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IExpressionContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IExpressionContext)
 }
 
 func (s *ExpressionContext) GetRuleContext() antlr.RuleContext {
@@ -1146,7 +715,8 @@ func (p *dae_configParser) Expression() (localctx IExpressionContext) {
 	_ = this
 
 	localctx = NewExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 14, dae_configParserRULE_expression)
+	p.EnterRule(localctx, 4, dae_configParserRULE_expression)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1166,20 +736,60 @@ func (p *dae_configParser) Expression() (localctx IExpressionContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(70)
+		p.SetState(32)
 		p.Match(dae_configParserID)
 	}
 	{
-		p.SetState(71)
+		p.SetState(33)
+		p.Match(dae_configParserT__0)
+	}
+	p.SetState(41)
+	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
+
+	for (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229632) != 0 {
+		p.SetState(39)
+		p.GetErrorHandler().Sync(p)
+		switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 1, p.GetParserRuleContext()) {
+		case 1:
+			{
+				p.SetState(34)
+				p.ArrowExpression()
+			}
+
+		case 2:
+			{
+				p.SetState(35)
+				p.Declaration()
+			}
+
+		case 3:
+			{
+				p.SetState(36)
+				p.StandaloneFunction()
+			}
+
+		case 4:
+			{
+				p.SetState(37)
+				p.Literal()
+			}
+
+		case 5:
+			{
+				p.SetState(38)
+				p.Expression()
+			}
+
+		}
+
+		p.SetState(43)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+	}
+	{
+		p.SetState(44)
 		p.Match(dae_configParserT__1)
-	}
-	{
-		p.SetState(72)
-		p.RoutingRuleOrDeclarationOrLiteralOrExpressionList()
-	}
-	{
-		p.SetState(73)
-		p.Match(dae_configParserT__2)
 	}
 
 	return localctx
@@ -1227,12 +837,37 @@ func (s *DeclarationContext) ID() antlr.TerminalNode {
 	return s.GetToken(dae_configParserID, 0)
 }
 
-func (s *DeclarationContext) FunctionPrototypeExpression() IFunctionPrototypeExpressionContext {
+func (s *DeclarationContext) AllFunctionPrototype() []IFunctionPrototypeContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IFunctionPrototypeContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IFunctionPrototypeContext); ok {
+			tst[i] = t.(IFunctionPrototypeContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *DeclarationContext) FunctionPrototype(i int) IFunctionPrototypeContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionPrototypeExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1240,7 +875,7 @@ func (s *DeclarationContext) FunctionPrototypeExpression() IFunctionPrototypeExp
 		return nil
 	}
 
-	return t.(IFunctionPrototypeExpressionContext)
+	return t.(IFunctionPrototypeContext)
 }
 
 func (s *DeclarationContext) OptAnnotation() IOptAnnotationContext {
@@ -1259,12 +894,37 @@ func (s *DeclarationContext) OptAnnotation() IOptAnnotationContext {
 	return t.(IOptAnnotationContext)
 }
 
-func (s *DeclarationContext) LiteralExpression() ILiteralExpressionContext {
+func (s *DeclarationContext) AllLiteral() []ILiteralContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(ILiteralContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]ILiteralContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(ILiteralContext); ok {
+			tst[i] = t.(ILiteralContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *DeclarationContext) Literal(i int) ILiteralContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(ILiteralExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(ILiteralContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1272,7 +932,7 @@ func (s *DeclarationContext) LiteralExpression() ILiteralExpressionContext {
 		return nil
 	}
 
-	return t.(ILiteralExpressionContext)
+	return t.(ILiteralContext)
 }
 
 func (s *DeclarationContext) GetRuleContext() antlr.RuleContext {
@@ -1300,7 +960,8 @@ func (p *dae_configParser) Declaration() (localctx IDeclarationContext) {
 	_ = this
 
 	localctx = NewDeclarationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 16, dae_configParserRULE_declaration)
+	p.EnterRule(localctx, 6, dae_configParserRULE_declaration)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1318,44 +979,80 @@ func (p *dae_configParser) Declaration() (localctx IDeclarationContext) {
 		}
 	}()
 
-	p.SetState(85)
+	p.SetState(70)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 4, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 5, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(75)
+			p.SetState(46)
 			p.Match(dae_configParserID)
 		}
 		{
-			p.SetState(76)
-			p.Match(dae_configParserT__3)
+			p.SetState(47)
+			p.Match(dae_configParserT__2)
 		}
 		{
-			p.SetState(77)
-			p.FunctionPrototypeExpression()
+			p.SetState(48)
+			p.FunctionPrototype()
+		}
+		p.SetState(53)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == dae_configParserT__3 {
+			{
+				p.SetState(49)
+				p.Match(dae_configParserT__3)
+			}
+			{
+				p.SetState(50)
+				p.FunctionPrototype()
+			}
+
+			p.SetState(55)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
 		}
 		{
-			p.SetState(78)
+			p.SetState(56)
 			p.OptAnnotation()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(80)
+			p.SetState(58)
 			p.Match(dae_configParserID)
 		}
 		{
-			p.SetState(81)
-			p.Match(dae_configParserT__3)
+			p.SetState(59)
+			p.Match(dae_configParserT__2)
 		}
 		{
-			p.SetState(82)
-			p.LiteralExpression()
+			p.SetState(60)
+			p.Literal()
+		}
+		p.SetState(65)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == dae_configParserT__4 {
+			{
+				p.SetState(61)
+				p.Match(dae_configParserT__4)
+			}
+			{
+				p.SetState(62)
+				p.Literal()
+			}
+
+			p.SetState(67)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
 		}
 		{
-			p.SetState(83)
+			p.SetState(68)
 			p.OptAnnotation()
 		}
 
@@ -1402,12 +1099,37 @@ func NewOptAnnotationContext(parser antlr.Parser, parent antlr.ParserRuleContext
 
 func (s *OptAnnotationContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *OptAnnotationContext) OptParameterList() IOptParameterListContext {
+func (s *OptAnnotationContext) AllAnnotationParameter() []IAnnotationParameterContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IAnnotationParameterContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IAnnotationParameterContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IAnnotationParameterContext); ok {
+			tst[i] = t.(IAnnotationParameterContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *OptAnnotationContext) AnnotationParameter(i int) IAnnotationParameterContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IOptParameterListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IAnnotationParameterContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1415,7 +1137,7 @@ func (s *OptAnnotationContext) OptParameterList() IOptParameterListContext {
 		return nil
 	}
 
-	return t.(IOptParameterListContext)
+	return t.(IAnnotationParameterContext)
 }
 
 func (s *OptAnnotationContext) GetRuleContext() antlr.RuleContext {
@@ -1443,7 +1165,8 @@ func (p *dae_configParser) OptAnnotation() (localctx IOptAnnotationContext) {
 	_ = this
 
 	localctx = NewOptAnnotationContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 18, dae_configParserRULE_optAnnotation)
+	p.EnterRule(localctx, 8, dae_configParserRULE_optAnnotation)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -1461,30 +1184,202 @@ func (p *dae_configParser) OptAnnotation() (localctx IOptAnnotationContext) {
 		}
 	}()
 
-	p.SetState(92)
+	p.SetState(85)
 	p.GetErrorHandler().Sync(p)
 
 	switch p.GetTokenStream().LA(1) {
-	case dae_configParserT__4:
+	case dae_configParserT__5:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(87)
-			p.Match(dae_configParserT__4)
-		}
-		{
-			p.SetState(88)
-			p.OptParameterList()
-		}
-		{
-			p.SetState(89)
+			p.SetState(72)
 			p.Match(dae_configParserT__5)
 		}
+		p.SetState(81)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 
-	case dae_configParserT__2, dae_configParserT__6, dae_configParserID, dae_configParserNON_ID, dae_configParserQUOTE_STRING:
+		if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0 {
+			{
+				p.SetState(73)
+				p.AnnotationParameter()
+			}
+			p.SetState(78)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
+
+			for _la == dae_configParserT__4 {
+				{
+					p.SetState(74)
+					p.Match(dae_configParserT__4)
+				}
+				{
+					p.SetState(75)
+					p.AnnotationParameter()
+				}
+
+				p.SetState(80)
+				p.GetErrorHandler().Sync(p)
+				_la = p.GetTokenStream().LA(1)
+			}
+
+		}
+		{
+			p.SetState(83)
+			p.Match(dae_configParserT__6)
+		}
+
+	case dae_configParserT__1, dae_configParserT__7, dae_configParserT__10, dae_configParserID, dae_configParserNON_ID, dae_configParserQUOTE_STRING:
 		p.EnterOuterAlt(localctx, 2)
 
 	default:
 		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
+	}
+
+	return localctx
+}
+
+// IAnnotationParameterContext is an interface to support dynamic dispatch.
+type IAnnotationParameterContext interface {
+	antlr.ParserRuleContext
+
+	// GetParser returns the parser.
+	GetParser() antlr.Parser
+
+	// IsAnnotationParameterContext differentiates from other interfaces.
+	IsAnnotationParameterContext()
+}
+
+type AnnotationParameterContext struct {
+	*antlr.BaseParserRuleContext
+	parser antlr.Parser
+}
+
+func NewEmptyAnnotationParameterContext() *AnnotationParameterContext {
+	var p = new(AnnotationParameterContext)
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
+	p.RuleIndex = dae_configParserRULE_annotationParameter
+	return p
+}
+
+func (*AnnotationParameterContext) IsAnnotationParameterContext() {}
+
+func NewAnnotationParameterContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *AnnotationParameterContext {
+	var p = new(AnnotationParameterContext)
+
+	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
+
+	p.parser = parser
+	p.RuleIndex = dae_configParserRULE_annotationParameter
+
+	return p
+}
+
+func (s *AnnotationParameterContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *AnnotationParameterContext) Parameter() IParameterContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IParameterContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IParameterContext)
+}
+
+func (s *AnnotationParameterContext) ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserID, 0)
+}
+
+func (s *AnnotationParameterContext) FunctionPrototype() IFunctionPrototypeContext {
+	var t antlr.RuleContext
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
+			t = ctx.(antlr.RuleContext)
+			break
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionPrototypeContext)
+}
+
+func (s *AnnotationParameterContext) GetRuleContext() antlr.RuleContext {
+	return s
+}
+
+func (s *AnnotationParameterContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+	return antlr.TreesStringTree(s, ruleNames, recog)
+}
+
+func (s *AnnotationParameterContext) EnterRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(dae_configListener); ok {
+		listenerT.EnterAnnotationParameter(s)
+	}
+}
+
+func (s *AnnotationParameterContext) ExitRule(listener antlr.ParseTreeListener) {
+	if listenerT, ok := listener.(dae_configListener); ok {
+		listenerT.ExitAnnotationParameter(s)
+	}
+}
+
+func (p *dae_configParser) AnnotationParameter() (localctx IAnnotationParameterContext) {
+	this := p
+	_ = this
+
+	localctx = NewAnnotationParameterContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 10, dae_configParserRULE_annotationParameter)
+
+	defer func() {
+		p.ExitRule()
+	}()
+
+	defer func() {
+		if err := recover(); err != nil {
+			if v, ok := err.(antlr.RecognitionException); ok {
+				localctx.SetException(v)
+				p.GetErrorHandler().ReportError(p, v)
+				p.GetErrorHandler().Recover(p, v)
+			} else {
+				panic(err)
+			}
+		}
+	}()
+
+	p.SetState(91)
+	p.GetErrorHandler().Sync(p)
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 9, p.GetParserRuleContext()) {
+	case 1:
+		p.EnterOuterAlt(localctx, 1)
+		{
+			p.SetState(87)
+			p.Parameter()
+		}
+
+	case 2:
+		p.EnterOuterAlt(localctx, 2)
+		{
+			p.SetState(88)
+			p.Match(dae_configParserID)
+		}
+		{
+			p.SetState(89)
+			p.Match(dae_configParserT__2)
+		}
+		{
+			p.SetState(90)
+			p.FunctionPrototype()
+		}
+
 	}
 
 	return localctx
@@ -1532,12 +1427,45 @@ func (s *FunctionPrototypeContext) ID() antlr.TerminalNode {
 	return s.GetToken(dae_configParserID, 0)
 }
 
-func (s *FunctionPrototypeContext) OptParameterList() IOptParameterListContext {
+func (s *FunctionPrototypeContext) NON_ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserNON_ID, 0)
+}
+
+func (s *FunctionPrototypeContext) QUOTE_STRING() antlr.TerminalNode {
+	return s.GetToken(dae_configParserQUOTE_STRING, 0)
+}
+
+func (s *FunctionPrototypeContext) AllParameter() []IParameterContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IParameterContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IParameterContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IParameterContext); ok {
+			tst[i] = t.(IParameterContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *FunctionPrototypeContext) Parameter(i int) IParameterContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IOptParameterListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IParameterContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -1545,7 +1473,7 @@ func (s *FunctionPrototypeContext) OptParameterList() IOptParameterListContext {
 		return nil
 	}
 
-	return t.(IOptParameterListContext)
+	return t.(IParameterContext)
 }
 
 func (s *FunctionPrototypeContext) GetRuleContext() antlr.RuleContext {
@@ -1573,7 +1501,7 @@ func (p *dae_configParser) FunctionPrototype() (localctx IFunctionPrototypeConte
 	_ = this
 
 	localctx = NewFunctionPrototypeContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 20, dae_configParserRULE_functionPrototype)
+	p.EnterRule(localctx, 12, dae_configParserRULE_functionPrototype)
 	var _la int
 
 	defer func() {
@@ -1593,316 +1521,64 @@ func (p *dae_configParser) FunctionPrototype() (localctx IFunctionPrototypeConte
 	}()
 
 	p.EnterOuterAlt(localctx, 1)
-	p.SetState(95)
+	p.SetState(94)
 	p.GetErrorHandler().Sync(p)
 	_la = p.GetTokenStream().LA(1)
 
-	if _la == dae_configParserT__6 {
+	if _la == dae_configParserT__7 {
 		{
-			p.SetState(94)
-			p.Match(dae_configParserT__6)
+			p.SetState(93)
+			p.Match(dae_configParserT__7)
 		}
 
+	}
+	{
+		p.SetState(96)
+		_la = p.GetTokenStream().LA(1)
+
+		if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0) {
+			p.GetErrorHandler().RecoverInline(p)
+		} else {
+			p.GetErrorHandler().ReportMatch(p)
+			p.Consume()
+		}
 	}
 	{
 		p.SetState(97)
-		p.Match(dae_configParserID)
-	}
-	{
-		p.SetState(98)
-		p.Match(dae_configParserT__7)
-	}
-	{
-		p.SetState(99)
-		p.OptParameterList()
-	}
-	{
-		p.SetState(100)
 		p.Match(dae_configParserT__8)
 	}
-
-	return localctx
-}
-
-// IOptParameterListContext is an interface to support dynamic dispatch.
-type IOptParameterListContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsOptParameterListContext differentiates from other interfaces.
-	IsOptParameterListContext()
-}
-
-type OptParameterListContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyOptParameterListContext() *OptParameterListContext {
-	var p = new(OptParameterListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_optParameterList
-	return p
-}
-
-func (*OptParameterListContext) IsOptParameterListContext() {}
-
-func NewOptParameterListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OptParameterListContext {
-	var p = new(OptParameterListContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_optParameterList
-
-	return p
-}
-
-func (s *OptParameterListContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *OptParameterListContext) NonEmptyParameterList() INonEmptyParameterListContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(INonEmptyParameterListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(INonEmptyParameterListContext)
-}
-
-func (s *OptParameterListContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *OptParameterListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *OptParameterListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterOptParameterList(s)
-	}
-}
-
-func (s *OptParameterListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitOptParameterList(s)
-	}
-}
-
-func (p *dae_configParser) OptParameterList() (localctx IOptParameterListContext) {
-	this := p
-	_ = this
-
-	localctx = NewOptParameterListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 22, dae_configParserRULE_optParameterList)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.SetState(104)
+	p.SetState(106)
 	p.GetErrorHandler().Sync(p)
+	_la = p.GetTokenStream().LA(1)
 
-	switch p.GetTokenStream().LA(1) {
-	case dae_configParserID, dae_configParserNON_ID, dae_configParserQUOTE_STRING:
-		p.EnterOuterAlt(localctx, 1)
+	if (int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0 {
 		{
-			p.SetState(102)
-			p.nonEmptyParameterList(0)
+			p.SetState(98)
+			p.Parameter()
 		}
+		p.SetState(103)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 
-	case dae_configParserT__5, dae_configParserT__8:
-		p.EnterOuterAlt(localctx, 2)
-
-	default:
-		panic(antlr.NewNoViableAltException(p, nil, nil, nil, nil, nil))
-	}
-
-	return localctx
-}
-
-// INonEmptyParameterListContext is an interface to support dynamic dispatch.
-type INonEmptyParameterListContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsNonEmptyParameterListContext differentiates from other interfaces.
-	IsNonEmptyParameterListContext()
-}
-
-type NonEmptyParameterListContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyNonEmptyParameterListContext() *NonEmptyParameterListContext {
-	var p = new(NonEmptyParameterListContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_nonEmptyParameterList
-	return p
-}
-
-func (*NonEmptyParameterListContext) IsNonEmptyParameterListContext() {}
-
-func NewNonEmptyParameterListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *NonEmptyParameterListContext {
-	var p = new(NonEmptyParameterListContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_nonEmptyParameterList
-
-	return p
-}
-
-func (s *NonEmptyParameterListContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *NonEmptyParameterListContext) Parameter() IParameterContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IParameterContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IParameterContext)
-}
-
-func (s *NonEmptyParameterListContext) NonEmptyParameterList() INonEmptyParameterListContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(INonEmptyParameterListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(INonEmptyParameterListContext)
-}
-
-func (s *NonEmptyParameterListContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *NonEmptyParameterListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *NonEmptyParameterListContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterNonEmptyParameterList(s)
-	}
-}
-
-func (s *NonEmptyParameterListContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitNonEmptyParameterList(s)
-	}
-}
-
-func (p *dae_configParser) NonEmptyParameterList() (localctx INonEmptyParameterListContext) {
-	return p.nonEmptyParameterList(0)
-}
-
-func (p *dae_configParser) nonEmptyParameterList(_p int) (localctx INonEmptyParameterListContext) {
-	this := p
-	_ = this
-
-	var _parentctx antlr.ParserRuleContext = p.GetParserRuleContext()
-	_parentState := p.GetState()
-	localctx = NewNonEmptyParameterListContext(p, p.GetParserRuleContext(), _parentState)
-	var _prevctx INonEmptyParameterListContext = localctx
-	var _ antlr.ParserRuleContext = _prevctx // TODO: To prevent unused variable warning.
-	_startState := 24
-	p.EnterRecursionRule(localctx, 24, dae_configParserRULE_nonEmptyParameterList, _p)
-
-	defer func() {
-		p.UnrollRecursionContexts(_parentctx)
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	var _alt int
-
-	p.EnterOuterAlt(localctx, 1)
-	{
-		p.SetState(107)
-		p.Parameter()
-	}
-
-	p.GetParserRuleContext().SetStop(p.GetTokenStream().LT(-1))
-	p.SetState(114)
-	p.GetErrorHandler().Sync(p)
-	_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
-
-	for _alt != 2 && _alt != antlr.ATNInvalidAltNumber {
-		if _alt == 1 {
-			if p.GetParseListeners() != nil {
-				p.TriggerExitRuleEvent()
-			}
-			_prevctx = localctx
-			localctx = NewNonEmptyParameterListContext(p, _parentctx, _parentState)
-			p.PushNewRecursionContext(localctx, _startState, dae_configParserRULE_nonEmptyParameterList)
-			p.SetState(109)
-
-			if !(p.Precpred(p.GetParserRuleContext(), 1)) {
-				panic(antlr.NewFailedPredicateException(p, "p.Precpred(p.GetParserRuleContext(), 1)", ""))
+		for _la == dae_configParserT__4 {
+			{
+				p.SetState(99)
+				p.Match(dae_configParserT__4)
 			}
 			{
-				p.SetState(110)
-				p.Match(dae_configParserT__0)
-			}
-			{
-				p.SetState(111)
+				p.SetState(100)
 				p.Parameter()
 			}
 
+			p.SetState(105)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
 		}
-		p.SetState(116)
-		p.GetErrorHandler().Sync(p)
-		_alt = p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 8, p.GetParserRuleContext())
+
+	}
+	{
+		p.SetState(108)
+		p.Match(dae_configParserT__9)
 	}
 
 	return localctx
@@ -1991,7 +1667,7 @@ func (p *dae_configParser) Parameter() (localctx IParameterContext) {
 	_ = this
 
 	localctx = NewParameterContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 26, dae_configParserRULE_parameter)
+	p.EnterRule(localctx, 14, dae_configParserRULE_parameter)
 
 	defer func() {
 		p.ExitRule()
@@ -2009,28 +1685,28 @@ func (p *dae_configParser) Parameter() (localctx IParameterContext) {
 		}
 	}()
 
-	p.SetState(121)
+	p.SetState(114)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 9, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(117)
+			p.SetState(110)
 			p.Match(dae_configParserID)
 		}
 		{
-			p.SetState(118)
-			p.Match(dae_configParserT__3)
+			p.SetState(111)
+			p.Match(dae_configParserT__2)
 		}
 		{
-			p.SetState(119)
+			p.SetState(112)
 			p.Literal()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(120)
+			p.SetState(113)
 			p.Literal()
 		}
 
@@ -2039,50 +1715,75 @@ func (p *dae_configParser) Parameter() (localctx IParameterContext) {
 	return localctx
 }
 
-// IRoutingRuleContext is an interface to support dynamic dispatch.
-type IRoutingRuleContext interface {
+// IArrowExpressionContext is an interface to support dynamic dispatch.
+type IArrowExpressionContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsRoutingRuleContext differentiates from other interfaces.
-	IsRoutingRuleContext()
+	// IsArrowExpressionContext differentiates from other interfaces.
+	IsArrowExpressionContext()
 }
 
-type RoutingRuleContext struct {
+type ArrowExpressionContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyRoutingRuleContext() *RoutingRuleContext {
-	var p = new(RoutingRuleContext)
+func NewEmptyArrowExpressionContext() *ArrowExpressionContext {
+	var p = new(ArrowExpressionContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_routingRule
+	p.RuleIndex = dae_configParserRULE_arrowExpression
 	return p
 }
 
-func (*RoutingRuleContext) IsRoutingRuleContext() {}
+func (*ArrowExpressionContext) IsArrowExpressionContext() {}
 
-func NewRoutingRuleContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RoutingRuleContext {
-	var p = new(RoutingRuleContext)
+func NewArrowExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ArrowExpressionContext {
+	var p = new(ArrowExpressionContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_routingRule
+	p.RuleIndex = dae_configParserRULE_arrowExpression
 
 	return p
 }
 
-func (s *RoutingRuleContext) GetParser() antlr.Parser { return s.parser }
+func (s *ArrowExpressionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *RoutingRuleContext) FunctionPrototypeExpression() IFunctionPrototypeExpressionContext {
+func (s *ArrowExpressionContext) AllArrowOperand() []IArrowOperandContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IArrowOperandContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IArrowOperandContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IArrowOperandContext); ok {
+			tst[i] = t.(IArrowOperandContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ArrowExpressionContext) ArrowOperand(i int) IArrowOperandContext {
 	var t antlr.RuleContext
+	j := 0
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionPrototypeExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
+		if _, ok := ctx.(IArrowOperandContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
 		}
 	}
 
@@ -2090,51 +1791,36 @@ func (s *RoutingRuleContext) FunctionPrototypeExpression() IFunctionPrototypeExp
 		return nil
 	}
 
-	return t.(IFunctionPrototypeExpressionContext)
+	return t.(IArrowOperandContext)
 }
 
-func (s *RoutingRuleContext) OutboundExpr() IOutboundExprContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IOutboundExprContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IOutboundExprContext)
-}
-
-func (s *RoutingRuleContext) GetRuleContext() antlr.RuleContext {
+func (s *ArrowExpressionContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *RoutingRuleContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ArrowExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *RoutingRuleContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ArrowExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterRoutingRule(s)
+		listenerT.EnterArrowExpression(s)
 	}
 }
 
-func (s *RoutingRuleContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ArrowExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitRoutingRule(s)
+		listenerT.ExitArrowExpression(s)
 	}
 }
 
-func (p *dae_configParser) RoutingRule() (localctx IRoutingRuleContext) {
+func (p *dae_configParser) ArrowExpression() (localctx IArrowExpressionContext) {
 	this := p
 	_ = this
 
-	localctx = NewRoutingRuleContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 28, dae_configParserRULE_routingRule)
+	localctx = NewArrowExpressionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 16, dae_configParserRULE_arrowExpression)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -2154,344 +1840,126 @@ func (p *dae_configParser) RoutingRule() (localctx IRoutingRuleContext) {
 
 	p.EnterOuterAlt(localctx, 1)
 	{
-		p.SetState(123)
-		p.FunctionPrototypeExpression()
+		p.SetState(116)
+		p.ArrowOperand()
 	}
 	{
-		p.SetState(124)
-		p.Match(dae_configParserT__9)
+		p.SetState(117)
+		p.Match(dae_configParserT__10)
 	}
 	{
-		p.SetState(125)
-		p.OutboundExpr()
+		p.SetState(118)
+		p.ArrowOperand()
 	}
-
-	return localctx
-}
-
-// IOutboundExprContext is an interface to support dynamic dispatch.
-type IOutboundExprContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsOutboundExprContext differentiates from other interfaces.
-	IsOutboundExprContext()
-}
-
-type OutboundExprContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyOutboundExprContext() *OutboundExprContext {
-	var p = new(OutboundExprContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_outboundExpr
-	return p
-}
-
-func (*OutboundExprContext) IsOutboundExprContext() {}
-
-func NewOutboundExprContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *OutboundExprContext {
-	var p = new(OutboundExprContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_outboundExpr
-
-	return p
-}
-
-func (s *OutboundExprContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *OutboundExprContext) Bare_literal() IBare_literalContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IBare_literalContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IBare_literalContext)
-}
-
-func (s *OutboundExprContext) FunctionPrototype() IFunctionPrototypeContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionPrototypeContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionPrototypeContext)
-}
-
-func (s *OutboundExprContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *OutboundExprContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *OutboundExprContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterOutboundExpr(s)
-	}
-}
-
-func (s *OutboundExprContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitOutboundExpr(s)
-	}
-}
-
-func (p *dae_configParser) OutboundExpr() (localctx IOutboundExprContext) {
-	this := p
-	_ = this
-
-	localctx = NewOutboundExprContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 30, dae_configParserRULE_outboundExpr)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.SetState(129)
+	p.SetState(123)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 10, p.GetParserRuleContext()) {
-	case 1:
-		p.EnterOuterAlt(localctx, 1)
+	_la = p.GetTokenStream().LA(1)
+
+	for _la == dae_configParserT__10 {
 		{
-			p.SetState(127)
-			p.Bare_literal()
-		}
-
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(128)
-			p.FunctionPrototype()
-		}
-
-	}
-
-	return localctx
-}
-
-// IFunctionPrototypeExpressionContext is an interface to support dynamic dispatch.
-type IFunctionPrototypeExpressionContext interface {
-	antlr.ParserRuleContext
-
-	// GetParser returns the parser.
-	GetParser() antlr.Parser
-
-	// IsFunctionPrototypeExpressionContext differentiates from other interfaces.
-	IsFunctionPrototypeExpressionContext()
-}
-
-type FunctionPrototypeExpressionContext struct {
-	*antlr.BaseParserRuleContext
-	parser antlr.Parser
-}
-
-func NewEmptyFunctionPrototypeExpressionContext() *FunctionPrototypeExpressionContext {
-	var p = new(FunctionPrototypeExpressionContext)
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_functionPrototypeExpression
-	return p
-}
-
-func (*FunctionPrototypeExpressionContext) IsFunctionPrototypeExpressionContext() {}
-
-func NewFunctionPrototypeExpressionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *FunctionPrototypeExpressionContext {
-	var p = new(FunctionPrototypeExpressionContext)
-
-	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
-
-	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_functionPrototypeExpression
-
-	return p
-}
-
-func (s *FunctionPrototypeExpressionContext) GetParser() antlr.Parser { return s.parser }
-
-func (s *FunctionPrototypeExpressionContext) FunctionPrototype() IFunctionPrototypeContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionPrototypeContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionPrototypeContext)
-}
-
-func (s *FunctionPrototypeExpressionContext) FunctionPrototypeExpression() IFunctionPrototypeExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IFunctionPrototypeExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IFunctionPrototypeExpressionContext)
-}
-
-func (s *FunctionPrototypeExpressionContext) GetRuleContext() antlr.RuleContext {
-	return s
-}
-
-func (s *FunctionPrototypeExpressionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
-	return antlr.TreesStringTree(s, ruleNames, recog)
-}
-
-func (s *FunctionPrototypeExpressionContext) EnterRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterFunctionPrototypeExpression(s)
-	}
-}
-
-func (s *FunctionPrototypeExpressionContext) ExitRule(listener antlr.ParseTreeListener) {
-	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitFunctionPrototypeExpression(s)
-	}
-}
-
-func (p *dae_configParser) FunctionPrototypeExpression() (localctx IFunctionPrototypeExpressionContext) {
-	this := p
-	_ = this
-
-	localctx = NewFunctionPrototypeExpressionContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 32, dae_configParserRULE_functionPrototypeExpression)
-
-	defer func() {
-		p.ExitRule()
-	}()
-
-	defer func() {
-		if err := recover(); err != nil {
-			if v, ok := err.(antlr.RecognitionException); ok {
-				localctx.SetException(v)
-				p.GetErrorHandler().ReportError(p, v)
-				p.GetErrorHandler().Recover(p, v)
-			} else {
-				panic(err)
-			}
-		}
-	}()
-
-	p.SetState(136)
-	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 11, p.GetParserRuleContext()) {
-	case 1:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(131)
-			p.FunctionPrototype()
-		}
-
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(132)
-			p.FunctionPrototype()
-		}
-		{
-			p.SetState(133)
+			p.SetState(119)
 			p.Match(dae_configParserT__10)
 		}
 		{
-			p.SetState(134)
-			p.FunctionPrototypeExpression()
+			p.SetState(120)
+			p.ArrowOperand()
 		}
 
+		p.SetState(125)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
 	}
 
 	return localctx
 }
 
-// IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext is an interface to support dynamic dispatch.
-type IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext interface {
+// IArrowOperandContext is an interface to support dynamic dispatch.
+type IArrowOperandContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsRoutingRuleOrDeclarationOrLiteralOrExpressionListContext differentiates from other interfaces.
-	IsRoutingRuleOrDeclarationOrLiteralOrExpressionListContext()
+	// IsArrowOperandContext differentiates from other interfaces.
+	IsArrowOperandContext()
 }
 
-type RoutingRuleOrDeclarationOrLiteralOrExpressionListContext struct {
+type ArrowOperandContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyRoutingRuleOrDeclarationOrLiteralOrExpressionListContext() *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext {
-	var p = new(RoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
+func NewEmptyArrowOperandContext() *ArrowOperandContext {
+	var p = new(ArrowOperandContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_routingRuleOrDeclarationOrLiteralOrExpressionList
+	p.RuleIndex = dae_configParserRULE_arrowOperand
 	return p
 }
 
-func (*RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) IsRoutingRuleOrDeclarationOrLiteralOrExpressionListContext() {
-}
+func (*ArrowOperandContext) IsArrowOperandContext() {}
 
-func NewRoutingRuleOrDeclarationOrLiteralOrExpressionListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext {
-	var p = new(RoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
+func NewArrowOperandContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *ArrowOperandContext {
+	var p = new(ArrowOperandContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_routingRuleOrDeclarationOrLiteralOrExpressionList
+	p.RuleIndex = dae_configParserRULE_arrowOperand
 
 	return p
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) GetParser() antlr.Parser {
-	return s.parser
+func (s *ArrowOperandContext) GetParser() antlr.Parser { return s.parser }
+
+func (s *ArrowOperandContext) ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserID, 0)
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) RoutingRule() IRoutingRuleContext {
+func (s *ArrowOperandContext) AllFunctionPrototype() []IFunctionPrototypeContext {
+	children := s.GetChildren()
+	len := 0
+	for _, ctx := range children {
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
+			len++
+		}
+	}
+
+	tst := make([]IFunctionPrototypeContext, len)
+	i := 0
+	for _, ctx := range children {
+		if t, ok := ctx.(IFunctionPrototypeContext); ok {
+			tst[i] = t.(IFunctionPrototypeContext)
+			i++
+		}
+	}
+
+	return tst
+}
+
+func (s *ArrowOperandContext) FunctionPrototype(i int) IFunctionPrototypeContext {
+	var t antlr.RuleContext
+	j := 0
+	for _, ctx := range s.GetChildren() {
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
+			if j == i {
+				t = ctx.(antlr.RuleContext)
+				break
+			}
+			j++
+		}
+	}
+
+	if t == nil {
+		return nil
+	}
+
+	return t.(IFunctionPrototypeContext)
+}
+
+func (s *ArrowOperandContext) OptAnnotation() IOptAnnotationContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRoutingRuleContext); ok {
+		if _, ok := ctx.(IOptAnnotationContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2501,42 +1969,10 @@ func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) RoutingRule()
 		return nil
 	}
 
-	return t.(IRoutingRuleContext)
+	return t.(IOptAnnotationContext)
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) RoutingRuleOrDeclarationOrLiteralOrExpressionList() IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
-}
-
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) Declaration() IDeclarationContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IDeclarationContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IDeclarationContext)
-}
-
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) Literal() ILiteralContext {
+func (s *ArrowOperandContext) Literal() ILiteralContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
 		if _, ok := ctx.(ILiteralContext); ok {
@@ -2552,48 +1988,33 @@ func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) Literal() ILi
 	return t.(ILiteralContext)
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) Expression() IExpressionContext {
-	var t antlr.RuleContext
-	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IExpressionContext); ok {
-			t = ctx.(antlr.RuleContext)
-			break
-		}
-	}
-
-	if t == nil {
-		return nil
-	}
-
-	return t.(IExpressionContext)
-}
-
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) GetRuleContext() antlr.RuleContext {
+func (s *ArrowOperandContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *ArrowOperandContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *ArrowOperandContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterRoutingRuleOrDeclarationOrLiteralOrExpressionList(s)
+		listenerT.EnterArrowOperand(s)
 	}
 }
 
-func (s *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *ArrowOperandContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitRoutingRuleOrDeclarationOrLiteralOrExpressionList(s)
+		listenerT.ExitArrowOperand(s)
 	}
 }
 
-func (p *dae_configParser) RoutingRuleOrDeclarationOrLiteralOrExpressionList() (localctx IRoutingRuleOrDeclarationOrLiteralOrExpressionListContext) {
+func (p *dae_configParser) ArrowOperand() (localctx IArrowOperandContext) {
 	this := p
 	_ = this
 
-	localctx = NewRoutingRuleOrDeclarationOrLiteralOrExpressionListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 34, dae_configParserRULE_routingRuleOrDeclarationOrLiteralOrExpressionList)
+	localctx = NewArrowOperandContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 18, dae_configParserRULE_arrowOperand)
+	var _la int
 
 	defer func() {
 		p.ExitRule()
@@ -2611,103 +2032,129 @@ func (p *dae_configParser) RoutingRuleOrDeclarationOrLiteralOrExpressionList() (
 		}
 	}()
 
-	p.SetState(151)
+	p.SetState(149)
 	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 12, p.GetParserRuleContext()) {
+	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 17, p.GetParserRuleContext()) {
 	case 1:
 		p.EnterOuterAlt(localctx, 1)
 		{
-			p.SetState(138)
-			p.RoutingRule()
+			p.SetState(126)
+			p.Match(dae_configParserID)
 		}
 		{
-			p.SetState(139)
-			p.RoutingRuleOrDeclarationOrLiteralOrExpressionList()
+			p.SetState(127)
+			p.Match(dae_configParserT__2)
+		}
+		{
+			p.SetState(128)
+			p.FunctionPrototype()
+		}
+		p.SetState(133)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == dae_configParserT__3 {
+			{
+				p.SetState(129)
+				p.Match(dae_configParserT__3)
+			}
+			{
+				p.SetState(130)
+				p.FunctionPrototype()
+			}
+
+			p.SetState(135)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
+		}
+		{
+			p.SetState(136)
+			p.OptAnnotation()
 		}
 
 	case 2:
 		p.EnterOuterAlt(localctx, 2)
 		{
-			p.SetState(141)
-			p.Declaration()
+			p.SetState(138)
+			p.FunctionPrototype()
+		}
+		p.SetState(143)
+		p.GetErrorHandler().Sync(p)
+		_la = p.GetTokenStream().LA(1)
+
+		for _la == dae_configParserT__3 {
+			{
+				p.SetState(139)
+				p.Match(dae_configParserT__3)
+			}
+			{
+				p.SetState(140)
+				p.FunctionPrototype()
+			}
+
+			p.SetState(145)
+			p.GetErrorHandler().Sync(p)
+			_la = p.GetTokenStream().LA(1)
 		}
 		{
-			p.SetState(142)
-			p.RoutingRuleOrDeclarationOrLiteralOrExpressionList()
+			p.SetState(146)
+			p.OptAnnotation()
 		}
 
 	case 3:
 		p.EnterOuterAlt(localctx, 3)
 		{
-			p.SetState(144)
+			p.SetState(148)
 			p.Literal()
 		}
-		{
-			p.SetState(145)
-			p.RoutingRuleOrDeclarationOrLiteralOrExpressionList()
-		}
-
-	case 4:
-		p.EnterOuterAlt(localctx, 4)
-		{
-			p.SetState(147)
-			p.Expression()
-		}
-		{
-			p.SetState(148)
-			p.RoutingRuleOrDeclarationOrLiteralOrExpressionList()
-		}
-
-	case 5:
-		p.EnterOuterAlt(localctx, 5)
 
 	}
 
 	return localctx
 }
 
-// IRoutingRuleListContext is an interface to support dynamic dispatch.
-type IRoutingRuleListContext interface {
+// IStandaloneFunctionContext is an interface to support dynamic dispatch.
+type IStandaloneFunctionContext interface {
 	antlr.ParserRuleContext
 
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
-	// IsRoutingRuleListContext differentiates from other interfaces.
-	IsRoutingRuleListContext()
+	// IsStandaloneFunctionContext differentiates from other interfaces.
+	IsStandaloneFunctionContext()
 }
 
-type RoutingRuleListContext struct {
+type StandaloneFunctionContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
 }
 
-func NewEmptyRoutingRuleListContext() *RoutingRuleListContext {
-	var p = new(RoutingRuleListContext)
+func NewEmptyStandaloneFunctionContext() *StandaloneFunctionContext {
+	var p = new(StandaloneFunctionContext)
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(nil, -1)
-	p.RuleIndex = dae_configParserRULE_routingRuleList
+	p.RuleIndex = dae_configParserRULE_standaloneFunction
 	return p
 }
 
-func (*RoutingRuleListContext) IsRoutingRuleListContext() {}
+func (*StandaloneFunctionContext) IsStandaloneFunctionContext() {}
 
-func NewRoutingRuleListContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *RoutingRuleListContext {
-	var p = new(RoutingRuleListContext)
+func NewStandaloneFunctionContext(parser antlr.Parser, parent antlr.ParserRuleContext, invokingState int) *StandaloneFunctionContext {
+	var p = new(StandaloneFunctionContext)
 
 	p.BaseParserRuleContext = antlr.NewBaseParserRuleContext(parent, invokingState)
 
 	p.parser = parser
-	p.RuleIndex = dae_configParserRULE_routingRuleList
+	p.RuleIndex = dae_configParserRULE_standaloneFunction
 
 	return p
 }
 
-func (s *RoutingRuleListContext) GetParser() antlr.Parser { return s.parser }
+func (s *StandaloneFunctionContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *RoutingRuleListContext) RoutingRule() IRoutingRuleContext {
+func (s *StandaloneFunctionContext) FunctionPrototype() IFunctionPrototypeContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRoutingRuleContext); ok {
+		if _, ok := ctx.(IFunctionPrototypeContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2717,13 +2164,13 @@ func (s *RoutingRuleListContext) RoutingRule() IRoutingRuleContext {
 		return nil
 	}
 
-	return t.(IRoutingRuleContext)
+	return t.(IFunctionPrototypeContext)
 }
 
-func (s *RoutingRuleListContext) RoutingRuleList() IRoutingRuleListContext {
+func (s *StandaloneFunctionContext) OptAnnotation() IOptAnnotationContext {
 	var t antlr.RuleContext
 	for _, ctx := range s.GetChildren() {
-		if _, ok := ctx.(IRoutingRuleListContext); ok {
+		if _, ok := ctx.(IOptAnnotationContext); ok {
 			t = ctx.(antlr.RuleContext)
 			break
 		}
@@ -2733,35 +2180,35 @@ func (s *RoutingRuleListContext) RoutingRuleList() IRoutingRuleListContext {
 		return nil
 	}
 
-	return t.(IRoutingRuleListContext)
+	return t.(IOptAnnotationContext)
 }
 
-func (s *RoutingRuleListContext) GetRuleContext() antlr.RuleContext {
+func (s *StandaloneFunctionContext) GetRuleContext() antlr.RuleContext {
 	return s
 }
 
-func (s *RoutingRuleListContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
+func (s *StandaloneFunctionContext) ToStringTree(ruleNames []string, recog antlr.Recognizer) string {
 	return antlr.TreesStringTree(s, ruleNames, recog)
 }
 
-func (s *RoutingRuleListContext) EnterRule(listener antlr.ParseTreeListener) {
+func (s *StandaloneFunctionContext) EnterRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.EnterRoutingRuleList(s)
+		listenerT.EnterStandaloneFunction(s)
 	}
 }
 
-func (s *RoutingRuleListContext) ExitRule(listener antlr.ParseTreeListener) {
+func (s *StandaloneFunctionContext) ExitRule(listener antlr.ParseTreeListener) {
 	if listenerT, ok := listener.(dae_configListener); ok {
-		listenerT.ExitRoutingRuleList(s)
+		listenerT.ExitStandaloneFunction(s)
 	}
 }
 
-func (p *dae_configParser) RoutingRuleList() (localctx IRoutingRuleListContext) {
+func (p *dae_configParser) StandaloneFunction() (localctx IStandaloneFunctionContext) {
 	this := p
 	_ = this
 
-	localctx = NewRoutingRuleListContext(p, p.GetParserRuleContext(), p.GetState())
-	p.EnterRule(localctx, 36, dae_configParserRULE_routingRuleList)
+	localctx = NewStandaloneFunctionContext(p, p.GetParserRuleContext(), p.GetState())
+	p.EnterRule(localctx, 20, dae_configParserRULE_standaloneFunction)
 
 	defer func() {
 		p.ExitRule()
@@ -2779,75 +2226,15 @@ func (p *dae_configParser) RoutingRuleList() (localctx IRoutingRuleListContext) 
 		}
 	}()
 
-	p.SetState(157)
-	p.GetErrorHandler().Sync(p)
-	switch p.GetInterpreter().AdaptivePredict(p.GetTokenStream(), 13, p.GetParserRuleContext()) {
-	case 1:
-		p.EnterOuterAlt(localctx, 1)
-		{
-			p.SetState(153)
-			p.RoutingRule()
-		}
-
-	case 2:
-		p.EnterOuterAlt(localctx, 2)
-		{
-			p.SetState(154)
-			p.RoutingRule()
-		}
-		{
-			p.SetState(155)
-			p.RoutingRuleList()
-		}
-
+	p.EnterOuterAlt(localctx, 1)
+	{
+		p.SetState(151)
+		p.FunctionPrototype()
+	}
+	{
+		p.SetState(152)
+		p.OptAnnotation()
 	}
 
 	return localctx
-}
-
-func (p *dae_configParser) Sempred(localctx antlr.RuleContext, ruleIndex, predIndex int) bool {
-	switch ruleIndex {
-	case 5:
-		var t *InputContext = nil
-		if localctx != nil {
-			t = localctx.(*InputContext)
-		}
-		return p.Input_Sempred(t, predIndex)
-
-	case 12:
-		var t *NonEmptyParameterListContext = nil
-		if localctx != nil {
-			t = localctx.(*NonEmptyParameterListContext)
-		}
-		return p.NonEmptyParameterList_Sempred(t, predIndex)
-
-	default:
-		panic("No predicate with index: " + fmt.Sprint(ruleIndex))
-	}
-}
-
-func (p *dae_configParser) Input_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
-	switch predIndex {
-	case 0:
-		return p.Precpred(p.GetParserRuleContext(), 2)
-
-	default:
-		panic("No predicate with index: " + fmt.Sprint(predIndex))
-	}
-}
-
-func (p *dae_configParser) NonEmptyParameterList_Sempred(localctx antlr.RuleContext, predIndex int) bool {
-	this := p
-	_ = this
-
-	switch predIndex {
-	case 1:
-		return p.Precpred(p.GetParserRuleContext(), 1)
-
-	default:
-		panic("No predicate with index: " + fmt.Sprint(predIndex))
-	}
 }

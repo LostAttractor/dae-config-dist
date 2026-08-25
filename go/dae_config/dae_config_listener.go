@@ -10,23 +10,8 @@ type dae_configListener interface {
 	// EnterStart is called when entering the start production.
 	EnterStart(c *StartContext)
 
-	// EnterBare_literal is called when entering the bare_literal production.
-	EnterBare_literal(c *Bare_literalContext)
-
-	// EnterQuote_literal is called when entering the quote_literal production.
-	EnterQuote_literal(c *Quote_literalContext)
-
 	// EnterLiteral is called when entering the literal production.
 	EnterLiteral(c *LiteralContext)
-
-	// EnterLiteralExpression is called when entering the literalExpression production.
-	EnterLiteralExpression(c *LiteralExpressionContext)
-
-	// EnterInput is called when entering the input production.
-	EnterInput(c *InputContext)
-
-	// EnterProgramStructureBlcok is called when entering the programStructureBlcok production.
-	EnterProgramStructureBlcok(c *ProgramStructureBlcokContext)
 
 	// EnterExpression is called when entering the expression production.
 	EnterExpression(c *ExpressionContext)
@@ -37,53 +22,29 @@ type dae_configListener interface {
 	// EnterOptAnnotation is called when entering the optAnnotation production.
 	EnterOptAnnotation(c *OptAnnotationContext)
 
+	// EnterAnnotationParameter is called when entering the annotationParameter production.
+	EnterAnnotationParameter(c *AnnotationParameterContext)
+
 	// EnterFunctionPrototype is called when entering the functionPrototype production.
 	EnterFunctionPrototype(c *FunctionPrototypeContext)
-
-	// EnterOptParameterList is called when entering the optParameterList production.
-	EnterOptParameterList(c *OptParameterListContext)
-
-	// EnterNonEmptyParameterList is called when entering the nonEmptyParameterList production.
-	EnterNonEmptyParameterList(c *NonEmptyParameterListContext)
 
 	// EnterParameter is called when entering the parameter production.
 	EnterParameter(c *ParameterContext)
 
-	// EnterRoutingRule is called when entering the routingRule production.
-	EnterRoutingRule(c *RoutingRuleContext)
+	// EnterArrowExpression is called when entering the arrowExpression production.
+	EnterArrowExpression(c *ArrowExpressionContext)
 
-	// EnterOutboundExpr is called when entering the outboundExpr production.
-	EnterOutboundExpr(c *OutboundExprContext)
+	// EnterArrowOperand is called when entering the arrowOperand production.
+	EnterArrowOperand(c *ArrowOperandContext)
 
-	// EnterFunctionPrototypeExpression is called when entering the functionPrototypeExpression production.
-	EnterFunctionPrototypeExpression(c *FunctionPrototypeExpressionContext)
-
-	// EnterRoutingRuleOrDeclarationOrLiteralOrExpressionList is called when entering the routingRuleOrDeclarationOrLiteralOrExpressionList production.
-	EnterRoutingRuleOrDeclarationOrLiteralOrExpressionList(c *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
-
-	// EnterRoutingRuleList is called when entering the routingRuleList production.
-	EnterRoutingRuleList(c *RoutingRuleListContext)
+	// EnterStandaloneFunction is called when entering the standaloneFunction production.
+	EnterStandaloneFunction(c *StandaloneFunctionContext)
 
 	// ExitStart is called when exiting the start production.
 	ExitStart(c *StartContext)
 
-	// ExitBare_literal is called when exiting the bare_literal production.
-	ExitBare_literal(c *Bare_literalContext)
-
-	// ExitQuote_literal is called when exiting the quote_literal production.
-	ExitQuote_literal(c *Quote_literalContext)
-
 	// ExitLiteral is called when exiting the literal production.
 	ExitLiteral(c *LiteralContext)
-
-	// ExitLiteralExpression is called when exiting the literalExpression production.
-	ExitLiteralExpression(c *LiteralExpressionContext)
-
-	// ExitInput is called when exiting the input production.
-	ExitInput(c *InputContext)
-
-	// ExitProgramStructureBlcok is called when exiting the programStructureBlcok production.
-	ExitProgramStructureBlcok(c *ProgramStructureBlcokContext)
 
 	// ExitExpression is called when exiting the expression production.
 	ExitExpression(c *ExpressionContext)
@@ -94,30 +55,21 @@ type dae_configListener interface {
 	// ExitOptAnnotation is called when exiting the optAnnotation production.
 	ExitOptAnnotation(c *OptAnnotationContext)
 
+	// ExitAnnotationParameter is called when exiting the annotationParameter production.
+	ExitAnnotationParameter(c *AnnotationParameterContext)
+
 	// ExitFunctionPrototype is called when exiting the functionPrototype production.
 	ExitFunctionPrototype(c *FunctionPrototypeContext)
-
-	// ExitOptParameterList is called when exiting the optParameterList production.
-	ExitOptParameterList(c *OptParameterListContext)
-
-	// ExitNonEmptyParameterList is called when exiting the nonEmptyParameterList production.
-	ExitNonEmptyParameterList(c *NonEmptyParameterListContext)
 
 	// ExitParameter is called when exiting the parameter production.
 	ExitParameter(c *ParameterContext)
 
-	// ExitRoutingRule is called when exiting the routingRule production.
-	ExitRoutingRule(c *RoutingRuleContext)
+	// ExitArrowExpression is called when exiting the arrowExpression production.
+	ExitArrowExpression(c *ArrowExpressionContext)
 
-	// ExitOutboundExpr is called when exiting the outboundExpr production.
-	ExitOutboundExpr(c *OutboundExprContext)
+	// ExitArrowOperand is called when exiting the arrowOperand production.
+	ExitArrowOperand(c *ArrowOperandContext)
 
-	// ExitFunctionPrototypeExpression is called when exiting the functionPrototypeExpression production.
-	ExitFunctionPrototypeExpression(c *FunctionPrototypeExpressionContext)
-
-	// ExitRoutingRuleOrDeclarationOrLiteralOrExpressionList is called when exiting the routingRuleOrDeclarationOrLiteralOrExpressionList production.
-	ExitRoutingRuleOrDeclarationOrLiteralOrExpressionList(c *RoutingRuleOrDeclarationOrLiteralOrExpressionListContext)
-
-	// ExitRoutingRuleList is called when exiting the routingRuleList production.
-	ExitRoutingRuleList(c *RoutingRuleListContext)
+	// ExitStandaloneFunction is called when exiting the standaloneFunction production.
+	ExitStandaloneFunction(c *StandaloneFunctionContext)
 }

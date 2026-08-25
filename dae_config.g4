@@ -5,8 +5,8 @@ fragment SAFE_ID_HEAD_CHAR: [a-zA-Z_] ;
 fragment SAFE_NONID_HEAD_CHAR: [/\\^*.+0-9-] ;
 fragment SAFE_INTERMEDIATE_CHAR: [=@$!#%] ;
 fragment SAFE_CHAR: ( SAFE_ID_HEAD_CHAR | SAFE_NONID_HEAD_CHAR | SAFE_INTERMEDIATE_CHAR ) ;
-fragment DOUBLE_QUOTE_STRING : '"' ( '\\"' | . )*? '"' ; // match "foo", "\"", "x\"\"y", ...
-fragment SINGLE_QUOTE_STRING : '\'' ( '\\\'' | . )*? '\'' ; // match 'foo', '\'', 'x\'\'y', ...
+fragment DOUBLE_QUOTE_STRING : '"' ( '\\"' | '\\\\' | '\\' ~["\\] | ~["\\] )* '"' ;
+fragment SINGLE_QUOTE_STRING : '\'' ( '\\\'' | '\\\\' | '\\' ~['\\] | ~['\\] )* '\'' ;
 
 // Tokens
 WHITESPACE : [ \t\r\n]+ -> skip ; // skip spaces, tabs, newlines
@@ -18,62 +18,33 @@ NON_ID : SAFE_NONID_HEAD_CHAR SAFE_CHAR* ;
 QUOTE_STRING : DOUBLE_QUOTE_STRING | SINGLE_QUOTE_STRING ;
 
 // Rules
-start : input EOF;
-
-bare_literal
-    : ID | NON_ID
-    ;
-
-quote_literal
-    :  QUOTE_STRING
-    ;
+start : expression* EOF;
 
 literal
-    : quote_literal
-    | bare_literal
-    ;
-
-literalExpression
-    : literal ',' literalExpression
-    | literal
-    ;
-
-input
-    : programStructureBlcok
-    | input programStructureBlcok
-    | // empty
-    ;
-
-programStructureBlcok
-    : expression
+    : ID | NON_ID | QUOTE_STRING
     ;
 
 expression
-    : ID '{' routingRuleOrDeclarationOrLiteralOrExpressionList '}'
+    : ID '{' (arrowExpression | declaration | standaloneFunction | literal | expression)* '}'
     ;
 
 declaration
-    : ID ':' functionPrototypeExpression optAnnotation
-    | ID ':' literalExpression optAnnotation
+    : ID ':' functionPrototype ('&&' functionPrototype)* optAnnotation
+    | ID ':' literal (',' literal)* optAnnotation
     ;
 
 optAnnotation
-    : '[' optParameterList ']'
+    : '[' (annotationParameter (',' annotationParameter)*)? ']'
     | // empty
+    ;
+
+annotationParameter
+    : parameter
+    | ID ':' functionPrototype
     ;
 
 functionPrototype
-    : '!'? ID '(' optParameterList ')'
-    ;
-
-optParameterList
-    : nonEmptyParameterList
-    | // empty
-    ;
-
-nonEmptyParameterList
-    : parameter
-    | nonEmptyParameterList ',' parameter
+    : '!'? (ID | NON_ID | QUOTE_STRING) '(' (parameter (',' parameter)*)? ')'
     ;
 
 parameter
@@ -81,29 +52,16 @@ parameter
     | literal
     ;
 
-routingRule
-    : functionPrototypeExpression '->' outboundExpr
+arrowExpression
+    : arrowOperand '->' arrowOperand ('->' arrowOperand)*
     ;
 
-outboundExpr
-    : bare_literal
-    | functionPrototype
+arrowOperand
+    : ID ':' functionPrototype ('&&' functionPrototype)* optAnnotation
+    | functionPrototype ('&&' functionPrototype)* optAnnotation
+    | literal
     ;
 
-functionPrototypeExpression
-    : functionPrototype
-    | functionPrototype '&&' functionPrototypeExpression
-    ;
-
-routingRuleOrDeclarationOrLiteralOrExpressionList
-    : routingRule routingRuleOrDeclarationOrLiteralOrExpressionList
-    | declaration routingRuleOrDeclarationOrLiteralOrExpressionList
-    | literal routingRuleOrDeclarationOrLiteralOrExpressionList
-    | expression routingRuleOrDeclarationOrLiteralOrExpressionList
-    | // empty
-    ;
-
-routingRuleList
-    : routingRule
-    | routingRule routingRuleList
+standaloneFunction
+    : functionPrototype optAnnotation
     ;
