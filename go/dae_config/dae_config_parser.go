@@ -73,22 +73,22 @@ func dae_configParserInit() {
 		40, 3, 4, 2, 0, 39, 34, 1, 0, 0, 0, 39, 35, 1, 0, 0, 0, 39, 36, 1, 0, 0,
 		0, 39, 37, 1, 0, 0, 0, 39, 38, 1, 0, 0, 0, 40, 43, 1, 0, 0, 0, 41, 39,
 		1, 0, 0, 0, 41, 42, 1, 0, 0, 0, 42, 44, 1, 0, 0, 0, 43, 41, 1, 0, 0, 0,
-		44, 45, 5, 2, 0, 0, 45, 5, 1, 0, 0, 0, 46, 47, 5, 15, 0, 0, 47, 48, 5,
-		3, 0, 0, 48, 53, 3, 12, 6, 0, 49, 50, 5, 4, 0, 0, 50, 52, 3, 12, 6, 0,
-		51, 49, 1, 0, 0, 0, 52, 55, 1, 0, 0, 0, 53, 51, 1, 0, 0, 0, 53, 54, 1,
-		0, 0, 0, 54, 56, 1, 0, 0, 0, 55, 53, 1, 0, 0, 0, 56, 57, 3, 8, 4, 0, 57,
-		71, 1, 0, 0, 0, 58, 59, 5, 15, 0, 0, 59, 60, 5, 3, 0, 0, 60, 65, 3, 2,
-		1, 0, 61, 62, 5, 5, 0, 0, 62, 64, 3, 2, 1, 0, 63, 61, 1, 0, 0, 0, 64, 67,
-		1, 0, 0, 0, 65, 63, 1, 0, 0, 0, 65, 66, 1, 0, 0, 0, 66, 68, 1, 0, 0, 0,
-		67, 65, 1, 0, 0, 0, 68, 69, 3, 8, 4, 0, 69, 71, 1, 0, 0, 0, 70, 46, 1,
-		0, 0, 0, 70, 58, 1, 0, 0, 0, 71, 7, 1, 0, 0, 0, 72, 81, 5, 6, 0, 0, 73,
-		78, 3, 10, 5, 0, 74, 75, 5, 5, 0, 0, 75, 77, 3, 10, 5, 0, 76, 74, 1, 0,
-		0, 0, 77, 80, 1, 0, 0, 0, 78, 76, 1, 0, 0, 0, 78, 79, 1, 0, 0, 0, 79, 82,
-		1, 0, 0, 0, 80, 78, 1, 0, 0, 0, 81, 73, 1, 0, 0, 0, 81, 82, 1, 0, 0, 0,
-		82, 83, 1, 0, 0, 0, 83, 86, 5, 7, 0, 0, 84, 86, 1, 0, 0, 0, 85, 72, 1,
-		0, 0, 0, 85, 84, 1, 0, 0, 0, 86, 9, 1, 0, 0, 0, 87, 92, 3, 14, 7, 0, 88,
-		89, 5, 15, 0, 0, 89, 90, 5, 3, 0, 0, 90, 92, 3, 12, 6, 0, 91, 87, 1, 0,
-		0, 0, 91, 88, 1, 0, 0, 0, 92, 11, 1, 0, 0, 0, 93, 95, 5, 8, 0, 0, 94, 93,
+		44, 45, 5, 2, 0, 0, 45, 5, 1, 0, 0, 0, 46, 47, 7, 0, 0, 0, 47, 48, 5, 3,
+		0, 0, 48, 53, 3, 12, 6, 0, 49, 50, 5, 4, 0, 0, 50, 52, 3, 12, 6, 0, 51,
+		49, 1, 0, 0, 0, 52, 55, 1, 0, 0, 0, 53, 51, 1, 0, 0, 0, 53, 54, 1, 0, 0,
+		0, 54, 56, 1, 0, 0, 0, 55, 53, 1, 0, 0, 0, 56, 57, 3, 8, 4, 0, 57, 71,
+		1, 0, 0, 0, 58, 59, 7, 0, 0, 0, 59, 60, 5, 3, 0, 0, 60, 65, 3, 2, 1, 0,
+		61, 62, 5, 5, 0, 0, 62, 64, 3, 2, 1, 0, 63, 61, 1, 0, 0, 0, 64, 67, 1,
+		0, 0, 0, 65, 63, 1, 0, 0, 0, 65, 66, 1, 0, 0, 0, 66, 68, 1, 0, 0, 0, 67,
+		65, 1, 0, 0, 0, 68, 69, 3, 8, 4, 0, 69, 71, 1, 0, 0, 0, 70, 46, 1, 0, 0,
+		0, 70, 58, 1, 0, 0, 0, 71, 7, 1, 0, 0, 0, 72, 81, 5, 6, 0, 0, 73, 78, 3,
+		10, 5, 0, 74, 75, 5, 5, 0, 0, 75, 77, 3, 10, 5, 0, 76, 74, 1, 0, 0, 0,
+		77, 80, 1, 0, 0, 0, 78, 76, 1, 0, 0, 0, 78, 79, 1, 0, 0, 0, 79, 82, 1,
+		0, 0, 0, 80, 78, 1, 0, 0, 0, 81, 73, 1, 0, 0, 0, 81, 82, 1, 0, 0, 0, 82,
+		83, 1, 0, 0, 0, 83, 86, 5, 7, 0, 0, 84, 86, 1, 0, 0, 0, 85, 72, 1, 0, 0,
+		0, 85, 84, 1, 0, 0, 0, 86, 9, 1, 0, 0, 0, 87, 92, 3, 14, 7, 0, 88, 89,
+		5, 15, 0, 0, 89, 90, 5, 3, 0, 0, 90, 92, 3, 12, 6, 0, 91, 87, 1, 0, 0,
+		0, 91, 88, 1, 0, 0, 0, 92, 11, 1, 0, 0, 0, 93, 95, 5, 8, 0, 0, 94, 93,
 		1, 0, 0, 0, 94, 95, 1, 0, 0, 0, 95, 96, 1, 0, 0, 0, 96, 97, 7, 0, 0, 0,
 		97, 106, 5, 9, 0, 0, 98, 103, 3, 14, 7, 0, 99, 100, 5, 5, 0, 0, 100, 102,
 		3, 14, 7, 0, 101, 99, 1, 0, 0, 0, 102, 105, 1, 0, 0, 0, 103, 101, 1, 0,
@@ -802,6 +802,12 @@ type IDeclarationContext interface {
 	// GetParser returns the parser.
 	GetParser() antlr.Parser
 
+	// GetKey returns the key token.
+	GetKey() antlr.Token
+
+	// SetKey sets the key token.
+	SetKey(antlr.Token)
+
 	// IsDeclarationContext differentiates from other interfaces.
 	IsDeclarationContext()
 }
@@ -809,6 +815,7 @@ type IDeclarationContext interface {
 type DeclarationContext struct {
 	*antlr.BaseParserRuleContext
 	parser antlr.Parser
+	key    antlr.Token
 }
 
 func NewEmptyDeclarationContext() *DeclarationContext {
@@ -833,9 +840,9 @@ func NewDeclarationContext(parser antlr.Parser, parent antlr.ParserRuleContext, 
 
 func (s *DeclarationContext) GetParser() antlr.Parser { return s.parser }
 
-func (s *DeclarationContext) ID() antlr.TerminalNode {
-	return s.GetToken(dae_configParserID, 0)
-}
+func (s *DeclarationContext) GetKey() antlr.Token { return s.key }
+
+func (s *DeclarationContext) SetKey(v antlr.Token) { s.key = v }
 
 func (s *DeclarationContext) AllFunctionPrototype() []IFunctionPrototypeContext {
 	children := s.GetChildren()
@@ -892,6 +899,18 @@ func (s *DeclarationContext) OptAnnotation() IOptAnnotationContext {
 	}
 
 	return t.(IOptAnnotationContext)
+}
+
+func (s *DeclarationContext) ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserID, 0)
+}
+
+func (s *DeclarationContext) NON_ID() antlr.TerminalNode {
+	return s.GetToken(dae_configParserNON_ID, 0)
+}
+
+func (s *DeclarationContext) QUOTE_STRING() antlr.TerminalNode {
+	return s.GetToken(dae_configParserQUOTE_STRING, 0)
 }
 
 func (s *DeclarationContext) AllLiteral() []ILiteralContext {
@@ -986,7 +1005,21 @@ func (p *dae_configParser) Declaration() (localctx IDeclarationContext) {
 		p.EnterOuterAlt(localctx, 1)
 		{
 			p.SetState(46)
-			p.Match(dae_configParserID)
+
+			var _lt = p.GetTokenStream().LT(1)
+
+			localctx.(*DeclarationContext).key = _lt
+
+			_la = p.GetTokenStream().LA(1)
+
+			if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0) {
+				var _ri = p.GetErrorHandler().RecoverInline(p)
+
+				localctx.(*DeclarationContext).key = _ri
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
+			}
 		}
 		{
 			p.SetState(47)
@@ -1023,7 +1056,21 @@ func (p *dae_configParser) Declaration() (localctx IDeclarationContext) {
 		p.EnterOuterAlt(localctx, 2)
 		{
 			p.SetState(58)
-			p.Match(dae_configParserID)
+
+			var _lt = p.GetTokenStream().LT(1)
+
+			localctx.(*DeclarationContext).key = _lt
+
+			_la = p.GetTokenStream().LA(1)
+
+			if !((int64(_la) & ^0x3f) == 0 && ((int64(1)<<_la)&229376) != 0) {
+				var _ri = p.GetErrorHandler().RecoverInline(p)
+
+				localctx.(*DeclarationContext).key = _ri
+			} else {
+				p.GetErrorHandler().ReportMatch(p)
+				p.Consume()
+			}
 		}
 		{
 			p.SetState(59)

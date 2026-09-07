@@ -124,3 +124,11 @@ func TestOrdinaryParameterRejectsFunctionValue(t *testing.T) {
 		t.Fatal("function-valued ordinary parameter was accepted")
 	}
 }
+
+func TestDeclarationKeys(t *testing.T) {
+	for _, key := range []string{"br-lan", "123", `"foo,bar"`, `'wan\backup'`, `"网卡"`} {
+		parser, errors := newParser("routing { interface { " + key + ": main } }")
+		parser.Start()
+		requireCompleteParse(t, parser, errors)
+	}
+}

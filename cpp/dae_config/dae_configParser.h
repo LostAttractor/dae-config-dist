@@ -10,7 +10,6 @@
 namespace dae_config {
 
 
-
 class  dae_configParser : public antlr4::Parser {
 public:
   enum {
@@ -109,12 +108,15 @@ public:
 
   class  DeclarationContext : public antlr4::ParserRuleContext {
   public:
+    antlr4::Token *key = nullptr;
     DeclarationContext(antlr4::ParserRuleContext *parent, size_t invokingState);
     virtual size_t getRuleIndex() const override;
-    antlr4::tree::TerminalNode *ID();
     std::vector<FunctionPrototypeContext *> functionPrototype();
     FunctionPrototypeContext* functionPrototype(size_t i);
     OptAnnotationContext *optAnnotation();
+    antlr4::tree::TerminalNode *ID();
+    antlr4::tree::TerminalNode *NON_ID();
+    antlr4::tree::TerminalNode *QUOTE_STRING();
     std::vector<LiteralContext *> literal();
     LiteralContext* literal(size_t i);
 

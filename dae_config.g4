@@ -29,8 +29,8 @@ expression
     ;
 
 declaration
-    : ID ':' functionPrototype ('&&' functionPrototype)* optAnnotation
-    | ID ':' literal (',' literal)* optAnnotation
+    : key=(ID | NON_ID | QUOTE_STRING) ':' functionPrototype ('&&' functionPrototype)* optAnnotation
+    | key=(ID | NON_ID | QUOTE_STRING) ':' literal (',' literal)* optAnnotation
     ;
 
 optAnnotation
