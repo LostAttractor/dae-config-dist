@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"testing"
 
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
+	"github.com/antlr4-go/antlr/v4"
 )
 
 type syntaxErrorListener struct {
@@ -12,7 +12,7 @@ type syntaxErrorListener struct {
 	errors []string
 }
 
-func (l *syntaxErrorListener) SyntaxError(_ antlr.Recognizer, _ interface{}, line, column int, msg string, _ antlr.RecognitionException) {
+func (l *syntaxErrorListener) SyntaxError(_ antlr.Recognizer, _ any, line, column int, msg string, _ antlr.RecognitionException) {
 	l.errors = append(l.errors, fmt.Sprintf("%d:%d: %s", line, column, msg))
 }
 
@@ -46,7 +46,7 @@ func TestOutboundExprLiteralsAndParams(t *testing.T) {
 		"'香港 01'(mark: 0x800, skip_while_noalive)",
 	} {
 		parser, errors := newParser("routing { domain(full: example.com) -> " + outbound + " }")
-		parser.Start()
+		parser.Start_()
 		requireCompleteParse(t, parser, errors)
 	}
 }
@@ -60,7 +60,7 @@ func TestQuotedLiteralEscapes(t *testing.T) {
 		`'^HK\d+$'`,
 	} {
 		parser, errors := newParser("routing { domain(full: example.com) -> " + literal + " }")
-		parser.Start()
+		parser.Start_()
 		requireCompleteParse(t, parser, errors)
 	}
 }
@@ -71,7 +71,7 @@ func TestQuotedLiteralControlCharacters(t *testing.T) {
 		"'line one\n\tline two'",
 	} {
 		parser, errors := newParser("routing { domain(full: example.com) -> " + literal + " }")
-		parser.Start()
+		parser.Start_()
 		requireCompleteParse(t, parser, errors)
 	}
 }
@@ -83,7 +83,7 @@ func TestFallbackDeclarationSupportsOutboundParams(t *testing.T) {
 	} {
 		t.Run(outbound, func(t *testing.T) {
 			parser, errors := newParser("routing { fallback: " + outbound + " }")
-			parser.Start()
+			parser.Start_()
 			requireCompleteParse(t, parser, errors)
 		})
 	}
@@ -91,7 +91,7 @@ func TestFallbackDeclarationSupportsOutboundParams(t *testing.T) {
 
 func TestLegacyCallableAnnotationRemainsParseableForMigrationError(t *testing.T) {
 	parser, errors := newParser("group { target { filter: name(exit) [via: node(entry)] } }")
-	parser.Start()
+	parser.Start_()
 	requireCompleteParse(t, parser, errors)
 }
 
@@ -104,14 +104,14 @@ func TestProxyPathExpressions(t *testing.T) {
 		"group { target { node(entry) -> group(exit) } }",
 	} {
 		parser, errors := newParser(source)
-		parser.Start()
+		parser.Start_()
 		requireCompleteParse(t, parser, errors)
 	}
 }
 
 func TestProxyPathRejectsDanglingArrow(t *testing.T) {
 	parser, errors := newParser("group { target { filter: node(entry) -> } }")
-	parser.Start()
+	parser.Start_()
 	if len(errors.errors) == 0 {
 		t.Fatal("dangling proxy path arrow was accepted")
 	}
@@ -119,7 +119,7 @@ func TestProxyPathRejectsDanglingArrow(t *testing.T) {
 
 func TestOrdinaryParameterRejectsFunctionValue(t *testing.T) {
 	parser, errors := newParser("routing { domain(value: nested(foo)) -> direct }")
-	parser.Start()
+	parser.Start_()
 	if len(errors.errors) == 0 {
 		t.Fatal("function-valued ordinary parameter was accepted")
 	}
@@ -128,7 +128,7 @@ func TestOrdinaryParameterRejectsFunctionValue(t *testing.T) {
 func TestDeclarationKeys(t *testing.T) {
 	for _, key := range []string{"br-lan", "123", `"foo,bar"`, `'wan\backup'`, `"网卡"`} {
 		parser, errors := newParser("routing { interface { " + key + ": main } }")
-		parser.Start()
+		parser.Start_()
 		requireCompleteParse(t, parser, errors)
 	}
 }

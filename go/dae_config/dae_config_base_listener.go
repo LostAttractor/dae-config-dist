@@ -1,7 +1,7 @@
-// Code generated from java-escape by ANTLR 4.11.1. DO NOT EDIT.
+// Code generated from dae_config.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package dae_config // dae_config
-import "github.com/antlr/antlr4/runtime/Go/antlr/v4"
+import "github.com/antlr4-go/antlr/v4"
 
 // Basedae_configListener is a complete listener for a parse tree produced by dae_configParser.
 type Basedae_configListener struct{}

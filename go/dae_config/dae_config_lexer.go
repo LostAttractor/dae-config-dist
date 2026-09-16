@@ -1,13 +1,12 @@
-// Code generated from java-escape by ANTLR 4.11.1. DO NOT EDIT.
+// Code generated from dae_config.g4 by ANTLR 4.13.1. DO NOT EDIT.
 
 package dae_config
 
 import (
 	"fmt"
+	"github.com/antlr4-go/antlr/v4"
 	"sync"
 	"unicode"
-
-	"github.com/antlr/antlr4/runtime/Go/antlr/v4"
 )
 
 // Suppress unused import error
@@ -22,42 +21,42 @@ type dae_configLexer struct {
 	// TODO: EOF string
 }
 
-var dae_configlexerLexerStaticData struct {
+var Dae_configLexerLexerStaticData struct {
 	once                   sync.Once
 	serializedATN          []int32
-	channelNames           []string
-	modeNames              []string
-	literalNames           []string
-	symbolicNames          []string
-	ruleNames              []string
-	predictionContextCache *antlr.PredictionContextCache
+	ChannelNames           []string
+	ModeNames              []string
+	LiteralNames           []string
+	SymbolicNames          []string
+	RuleNames              []string
+	PredictionContextCache *antlr.PredictionContextCache
 	atn                    *antlr.ATN
 	decisionToDFA          []*antlr.DFA
 }
 
 func dae_configlexerLexerInit() {
-	staticData := &dae_configlexerLexerStaticData
-	staticData.channelNames = []string{
+	staticData := &Dae_configLexerLexerStaticData
+	staticData.ChannelNames = []string{
 		"DEFAULT_TOKEN_CHANNEL", "HIDDEN",
 	}
-	staticData.modeNames = []string{
+	staticData.ModeNames = []string{
 		"DEFAULT_MODE",
 	}
-	staticData.literalNames = []string{
+	staticData.LiteralNames = []string{
 		"", "'{'", "'}'", "':'", "'&&'", "','", "'['", "']'", "'!'", "'('",
 		"')'", "'->'",
 	}
-	staticData.symbolicNames = []string{
+	staticData.SymbolicNames = []string{
 		"", "", "", "", "", "", "", "", "", "", "", "", "WHITESPACE", "COMMENT_BLOCK",
 		"COMMENT_LINE_SHARP", "ID", "NON_ID", "QUOTE_STRING",
 	}
-	staticData.ruleNames = []string{
+	staticData.RuleNames = []string{
 		"T__0", "T__1", "T__2", "T__3", "T__4", "T__5", "T__6", "T__7", "T__8",
 		"T__9", "T__10", "SAFE_ID_HEAD_CHAR", "SAFE_NONID_HEAD_CHAR", "SAFE_INTERMEDIATE_CHAR",
 		"SAFE_CHAR", "DOUBLE_QUOTE_STRING", "SINGLE_QUOTE_STRING", "WHITESPACE",
 		"COMMENT_BLOCK", "COMMENT_LINE_SHARP", "ID", "NON_ID", "QUOTE_STRING",
 	}
-	staticData.predictionContextCache = antlr.NewPredictionContextCache()
+	staticData.PredictionContextCache = antlr.NewPredictionContextCache()
 	staticData.serializedATN = []int32{
 		4, 0, 17, 168, 6, -1, 2, 0, 7, 0, 2, 1, 7, 1, 2, 2, 7, 2, 2, 3, 7, 3, 2,
 		4, 7, 4, 2, 5, 7, 5, 2, 6, 7, 6, 2, 7, 7, 7, 2, 8, 7, 8, 2, 9, 7, 9, 2,
@@ -152,7 +151,7 @@ func dae_configlexerLexerInit() {
 // Newdae_configLexer(). You can call this function if you wish to initialize the static state ahead
 // of time.
 func Dae_configLexerInit() {
-	staticData := &dae_configlexerLexerStaticData
+	staticData := &Dae_configLexerLexerStaticData
 	staticData.once.Do(dae_configlexerLexerInit)
 }
 
@@ -161,13 +160,13 @@ func Newdae_configLexer(input antlr.CharStream) *dae_configLexer {
 	Dae_configLexerInit()
 	l := new(dae_configLexer)
 	l.BaseLexer = antlr.NewBaseLexer(input)
-	staticData := &dae_configlexerLexerStaticData
-	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.predictionContextCache)
-	l.channelNames = staticData.channelNames
-	l.modeNames = staticData.modeNames
-	l.RuleNames = staticData.ruleNames
-	l.LiteralNames = staticData.literalNames
-	l.SymbolicNames = staticData.symbolicNames
+	staticData := &Dae_configLexerLexerStaticData
+	l.Interpreter = antlr.NewLexerATNSimulator(l, staticData.atn, staticData.decisionToDFA, staticData.PredictionContextCache)
+	l.channelNames = staticData.ChannelNames
+	l.modeNames = staticData.ModeNames
+	l.RuleNames = staticData.RuleNames
+	l.LiteralNames = staticData.LiteralNames
+	l.SymbolicNames = staticData.SymbolicNames
 	l.GrammarFileName = "dae_config.g4"
 	// TODO: l.EOF = antlr.TokenEOF
 
